@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6f5aa8">
+<title>Fitriulfa — Little Corner ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f2; --surface:#fff; --surface2:#f1eee9; --ink:#20202a; --muted:#777583;
+  --line:#e6e1da; --purple:#7562a8; --purple2:#a596cf; --rose:#d98d9d; --gold:#c8a56a;
+  --shadow:0 18px 55px rgba(48,40,62,.09); --r:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:radial-gradient(circle at 10% 0%,#eee9f7 0,transparent 30%),radial-gradient(circle at 100% 10%,#f6e9ed 0,transparent 28%),var(--bg);color:var(--ink);min-height:100vh}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh;max-width:1500px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:28px 18px;border-right:1px solid var(--line);background:rgba(255,255,255,.72);backdrop-filter:blur(18px);z-index:20}
+.brand{padding:8px 12px 28px}
+.brand .dot{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--rose));display:grid;place-items:center;color:white;font-size:18px;box-shadow:0 8px 25px rgba(117,98,168,.25);margin-bottom:13px}
+.brand h2{font:600 22px "Playfair Display",serif;letter-spacing:-.3px}
+.brand p{font-size:11px;color:var(--muted);margin-top:4px}
+.nav-title{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#aaa4ad;font-weight:700;padding:8px 12px}
+.nav button{border:0;background:transparent;width:100%;display:flex;align-items:center;gap:12px;text-align:left;padding:12px;border-radius:14px;color:#64616b;font-weight:600;font-size:13px;margin:2px 0;transition:.2s}
+.nav button:hover,.nav button.active{background:#eeeaf7;color:var(--purple)}
+.nav .ico{width:22px;text-align:center;font-size:16px}
+.side-note{position:absolute;left:18px;right:18px;bottom:24px;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.75);font-size:11px;color:var(--muted);line-height:1.5}
+.side-note b{color:var(--ink)}
+.main{min-width:0;padding:25px 34px 50px}
+.topbar{height:52px;display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.search{width:min(380px,55%);height:42px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;padding:0 13px;gap:9px}
+.search span{color:#aaa}
+.search input{border:0;outline:0;background:transparent;width:100%;font-size:12px;color:var(--ink)}
+.actions{display:flex;gap:8px}
+.iconbtn{width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:13px;color:#666;transition:.2s}
+.iconbtn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.music-on{background:#eeeaf7;color:var(--purple)!important}
+.page{display:none;animation:up .35s ease}
+.page.active{display:block}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:7px}
+h1{font:600 clamp(30px,4vw,48px)/1.05 "Playfair Display",serif;letter-spacing:-1px}
+h2{font:600 26px "Playfair Display",serif}
+h3{font-size:15px}
+.lead{color:var(--muted);font-size:13px;line-height:1.7;margin-top:10px}
+.hero{position:relative;min-height:390px;border-radius:32px;overflow:hidden;background:#2f2938;margin-bottom:18px;box-shadow:var(--shadow)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,22,31,.88) 0%,rgba(34,27,39,.5) 47%,rgba(34,27,39,.08) 100%)}
+.hero-content{position:relative;z-index:2;max-width:650px;color:white;padding:62px 55px}
+.hero-content .eyebrow{color:#e4d7ff}
+.hero-content h1{font-size:clamp(38px,5vw,64px)}
+.hero-content .lead{color:rgba(255,255,255,.78);max-width:560px}
+.signature{font:500 16px "Playfair Display",serif;color:#f4dfe4;margin-top:22px}
+.grid{display:grid;gap:16px}
+.stats{grid-template-columns:repeat(4,1fr);margin:18px 0}
+.card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:0 7px 30px rgba(50,42,65,.04)}
+.stat{min-height:112px}
+.stat .small{font-size:11px;color:var(--muted);margin-bottom:8px}
+.stat strong{font-size:27px;letter-spacing:-1px}
+.stat .hint{font-size:10px;color:#a49eaa;margin-top:5px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 13px}
+.section-head p{font-size:11px;color:var(--muted)}
+.btn{border:0;border-radius:12px;padding:11px 15px;font-size:12px;font-weight:700;transition:.2s}
+.btn-primary{background:var(--purple);color:white;box-shadow:0 8px 20px rgba(117,98,168,.2)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-soft{background:#eeeaf7;color:var(--purple)}
+.btn-ghost{background:white;border:1px solid var(--line);color:#666}
+.photo-grid{grid-template-columns:repeat(4,1fr)}
+.photo{padding:0;overflow:hidden;position:relative;min-height:230px}
+.photo img{width:100%;height:250px;object-fit:cover;display:block;transition:.5s}
+.photo:hover img{transform:scale(1.035)}
+.photo .caption{padding:13px 15px}
+.caption b{font-size:12px}.caption span{display:block;font-size:10px;color:var(--muted);margin-top:3px}
+.video-grid{grid-template-columns:repeat(2,1fr)}
+.video-card{padding:0;overflow:hidden}
+.video-card video{width:100%;height:300px;display:block;object-fit:cover;background:#1e1b22}
+.video-card .caption{padding:13px 15px 16px}
+.memory-grid{grid-template-columns:repeat(2,1fr)}
+.memory{display:grid;grid-template-columns:150px 1fr;gap:17px;align-items:center}
+.memory img{width:150px;height:125px;object-fit:cover;border-radius:17px}
+.memory .date{font-size:10px;color:var(--purple);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.memory h3{margin:6px 0;font-family:"Playfair Display",serif;font-size:19px}
+.memory p{font-size:11px;color:var(--muted);line-height:1.6}
+.timeline{position:relative;padding-left:22px}
+.timeline:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.titem{position:relative;padding:0 0 20px}
+.titem:before{content:"";position:absolute;left:-20px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--purple);box-shadow:0 0 0 5px #eeeaf7}
+.titem time{font-size:10px;color:var(--purple);font-weight:700}.titem h3{margin:4px 0}.titem p{font-size:11px;color:var(--muted);line-height:1.6}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+.field label{font-size:11px;font-weight:700;color:#67636c}
+.field input,.field textarea,.field select{border:1px solid var(--line);background:#fcfbfa;border-radius:13px;padding:12px 13px;outline:none;color:var(--ink);font-size:12px}
+.field textarea{min-height:145px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#b9acd8;box-shadow:0 0 0 3px #eeeaf7}
+.question{background:linear-gradient(135deg,#f0ecfa,#fff7f5);border:1px solid #e3dbf1;border-radius:25px;padding:27px;margin-bottom:15px}
+.question .qnum{font-size:10px;color:var(--purple);font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
+.question h2{margin-top:9px;max-width:800px;font-size:28px;line-height:1.25}
+.question textarea{margin-top:18px;width:100%;min-height:125px;background:rgba(255,255,255,.8);border:1px solid #e1d9ed;border-radius:15px;padding:14px;outline:0;resize:vertical}
+.q-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px;gap:10px}
+.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mood{border:1px solid var(--line);background:#fff;border-radius:17px;padding:17px 8px;text-align:center;transition:.2s}
+.mood:hover,.mood.selected{border-color:#b9acd8;background:#f1edf9;transform:translateY(-2px)}
+.mood .emoji{font-size:25px;display:block;margin-bottom:6px}.mood span:last-child{font-size:10px;color:#666}
+.toast{position:fixed;right:24px;bottom:24px;background:#24222b;color:#fff;padding:13px 17px;border-radius:14px;font-size:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s;z-index:100}
+.toast.show{opacity:1;transform:none}
+.loading{opacity:.55;pointer-events:none}
+.empty{padding:35px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.45)}
+.result-list{display:grid;gap:9px;margin-top:15px}.result{padding:12px;border:1px solid var(--line);border-radius:13px;background:#fff}.result b{font-size:11px}.result p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+.footer-note{text-align:center;color:#aaa4ad;font-size:10px;margin-top:35px}
+.mobile-nav{display:none}
+@media(max-width:1050px){
+ .app{grid-template-columns:210px 1fr}.main{padding:22px}.photo-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+ .app{display:block}.sidebar{display:none}.main{padding:16px 14px 85px}.topbar{margin-bottom:15px}.search{width:100%;max-width:none}.actions{display:none}
+ .hero{min-height:430px}.hero-content{padding:45px 25px}.hero:after{background:linear-gradient(0deg,rgba(26,22,31,.92),rgba(34,27,39,.12))}
+ .stats,.photo-grid,.memory-grid,.video-grid,.moods{grid-template-columns:1fr 1fr}.photo img{height:210px}.memory{grid-template-columns:1fr}.memory img{width:100%;height:200px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+ .mobile-nav{position:fixed;display:flex;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.93);border:1px solid var(--line);backdrop-filter:blur(18px);border-radius:20px;padding:7px;z-index:50;box-shadow:0 12px 35px rgba(40,35,50,.13)}
+ .mobile-nav button{flex:1;border:0;background:transparent;border-radius:13px;padding:9px 3px;font-size:9px;color:#777}.mobile-nav button.active{background:#eeeaf7;color:var(--purple);font-weight:700}
+ .mobile-nav span{display:block;font-size:16px;margin-bottom:2px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="dot">✦</div>
+    <h2>Fitriulfa</h2>
+    <p>little corner • just good memories</p>
+  </div>
+  <div class="nav-title">Explore</div>
+  <nav class="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span> Beranda</button>
+    <button data-page="photos"><span class="ico">◫</span> 8 Foto</button>
+    <button data-page="memories"><span class="ico">♡</span> 2 Memories</button>
+    <button data-page="videos"><span class="ico">▶</span> 4 Video</button>
+    <button data-page="qa"><span class="ico">?</span> Get to Know</button>
+    <button data-page="message"><span class="ico">✉</span> Leave a Message</button>
+    <button data-page="mood"><span class="ico">☼</span> Mood Check-in</button>
+    <button data-page="timeline"><span class="ico">⌁</span> Timeline</button>
+  </nav>
+  <div class="side-note"><b>For Fitriulfa.</b><br>Tempat kecil buat nyimpan cerita, jawaban, foto, video, dan hal-hal random yang sayang kalau hilang.</div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="search"><span>⌕</span><input id="searchInput" placeholder="Cari di dashboard..."></div>
+    <div class="actions">
+      <button class="iconbtn" id="musicBtn" title="Music">♫</button>
+      <button class="iconbtn" id="refreshBtn" title="Refresh">↻</button>
+    </div>
+  </div>
+
+  <section class="page active" id="home">
+    <div class="hero">
+      <img src="assets/fitriulfa-01.jpg" alt="Fitriulfa">
+      <div class="hero-content">
+        <div class="eyebrow">A little corner on the internet</div>
+        <h1>Hi, Fitriulfa ✦</h1>
+        <p class="lead">Bukan tempat yang terlalu serius. Cuma sebuah sudut kecil untuk menyimpan momen, cerita, jawaban random, dan hal-hal yang bikin senyum kalau dilihat lagi.</p>
+        <div class="signature">some memories deserve their own place.</div>
+      </div>
+    </div>
+    <div class="grid stats">
+      <div class="card stat"><div class="small">Messages</div><strong id="statMessages">—</strong><div class="hint">pesan yang masuk</div></div>
+      <div class="card stat"><div class="small">Questions</div><strong id="statAnswers">—</strong><div class="hint">jawaban tersimpan</div></div>
+      <div class="card stat"><div class="small">Memories</div><strong>2</strong><div class="hint">special little moments</div></div>
+      <div class="card stat"><div class="small">Mood</div><strong id="statMood">—</strong><div class="hint">check-in terakhir</div></div>
+    </div>
+    <div class="section-head"><div><div class="eyebrow">soft archive</div><h2>Little things worth keeping</h2></div><button class="btn btn-soft" onclick="showPage('photos')">See photos →</button></div>
+    <div class="grid photo-grid">
+      <article class="card photo"><img src="assets/fitriulfa-01.jpg"><div class="caption"><b>01 — that smile</b><span>one of those photos that just feels warm</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-02.jpg"><div class="caption"><b>02 — candid</b><span>no perfect pose required</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-03.jpg"><div class="caption"><b>03 — good day</b><span>saved for later</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-04.jpg"><div class="caption"><b>04 — favorite frame</b><span>simple, but memorable</span></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="photos">
+    <div class="eyebrow">photo archive</div><h1>8 little frames.</h1><p class="lead">Upload foto Fitriulfa ke folder <b>assets</b> dengan nama file yang sama di bawah, atau ubah daftar file pada bagian <b>MEDIA_ITEMS</b> di script.</p>
+    <div class="grid photo-grid" style="margin-top:20px">
+      <article class="card photo"><img src="assets/fitriulfa-01.jpg"><div class="caption"><b>01 — First Frame</b><span>A little moment worth saving.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-02.jpg"><div class="caption"><b>02 — Candid</b><span>Nothing too planned.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-03.jpg"><div class="caption"><b>03 — Soft Light</b><span>Good light, good mood.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-04.jpg"><div class="caption"><b>04 — Favorite</b><span>One for the archive.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-05.jpg"><div class="caption"><b>05 — Random</b><span>Randomly became memorable.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-06.jpg"><div class="caption"><b>06 — Good Energy</b><span>Keep this one.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-07.jpg"><div class="caption"><b>07 — Another Day</b><span>Just because.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-08.jpg"><div class="caption"><b>08 — Last Frame</b><span>Not really the last one.</span></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="memories">
+    <div class="eyebrow">memory lane</div><h1>2 memories.</h1><p class="lead">Dua cerita utama yang bisa kamu edit kapan saja dari bagian konfigurasi.</p>
+    <div class="grid memory-grid" style="margin-top:20px">
+      <article class="card memory"><img src="assets/memory-01.jpg"><div><div class="date">Memory 01</div><h3>The moment we still remember</h3><p>Isi cerita memory pertama di sini. Buat singkat, personal, dan terasa seperti potongan diary.</p></div></article>
+      <article class="card memory"><img src="assets/memory-02.jpg"><div><div class="date">Memory 02</div><h3>One ordinary day, somehow special</h3><p>Isi cerita memory kedua di sini. Bisa berupa kejadian lucu, perjalanan, obrolan, atau momen kecil.</p></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="videos">
+    <div class="eyebrow">moving memories</div><h1>4 little videos.</h1><p class="lead">Letakkan video di <b>assets</b>. Browser tidak mengizinkan video autoplay bersuara, jadi video memakai kontrol manual.</p>
+    <div class="grid video-grid" style="margin-top:20px">
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-01.jpg"><source src="assets/video-01.mp4" type="video/mp4"></video><div class="caption"><b>Video 01</b><span>the little moments in motion.</span></div></article>
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-03.jpg"><source src="assets/video-02.mp4" type="video/mp4"></video><div class="caption"><b>Video 02</b><span>another frame to remember.</span></div></article>
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-05.jpg"><source src="assets/video-03.mp4" type="video/mp4"></video><div class="caption"><b>Video 03</b><span>random, but worth keeping.</span></div></article>
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-07.jpg"><source src="assets/video-04.mp4" type="video/mp4"></video><div class="caption"><b>Video 04</b><span>save the feeling, not just the file.</span></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="qa">
+    <div class="eyebrow">get to know fitriulfa</div><h1>Questions, but make them honest.</h1><p class="lead">Jawab yang kamu nyaman jawab. Setiap jawaban dikirim ke Google Spreadsheet melalui Apps Script.</p>
+    <div class="card" style="margin-top:20px">
+      <div class="question">
+        <div class="qnum" id="qNumber">Question</div>
+        <h2 id="questionText">Loading question...</h2>
+        <textarea id="answerText" placeholder="Tulis jawabanmu di sini..."></textarea>
+        <div class="q-actions"><button class="btn btn-ghost" id="skipQuestion">Skip question</button><button class="btn btn-primary" id="submitAnswer">Save answer ✦</button></div>
+      </div>
+      <div id="answerStatus"></div>
+    </div>
+  </section>
+
+  <section class="page" id="message">
+    <div class="eyebrow">leave a message</div><h1>Say something.</h1><p class="lead">Pesan langsung dikirim ke server. Tidak disimpan di browser sebagai database utama.</p>
+    <div class="card" style="margin-top:20px">
+      <form id="messageForm" class="form-grid">
+        <div class="field"><label>Nama</label><input id="messageName" value="Fitriulfa" maxlength="80"></div>
+        <div class="field"><label>Kategori</label><select id="messageCategory"><option>Cerita</option><option>Curhat</option><option>Random</option><option>Pertanyaan</option><option>Saran</option><option>Humor</option><option>Penting</option></select></div>
+        <div class="field full"><label>Pesan</label><textarea id="messageText" required maxlength="5000" placeholder="Tulis apa saja yang ingin kamu sampaikan..."></textarea></div>
+        <div class="field full" style="align-items:flex-start"><button class="btn btn-primary" type="submit">Kirim ke server ✦</button></div>
+      </form>
+    </div>
+    <div class="section-head"><div><div class="eyebrow">latest</div><h2>Recent messages</h2></div></div>
+    <div id="recentMessages" class="result-list"></div>
+  </section>
+
+  <section class="page" id="mood">
+    <div class="eyebrow">daily check-in</div><h1>How are you, really?</h1><p class="lead">Pilih mood dan tambahkan catatan kalau mau. Data disimpan ke sheet <b>Mood</b>.</p>
+    <div class="card" style="margin-top:20px">
+      <div class="moods">
+        <button class="mood" data-mood="Happy"><span class="emoji">☀️</span><span>Happy</span></button>
+        <button class="mood" data-mood="Calm"><span class="emoji">🌿</span><span>Calm</span></button>
+        <button class="mood" data-mood="Excited"><span class="emoji">✨</span><span>Excited</span></button>
+        <button class="mood" data-mood="Tired"><span class="emoji">☁️</span><span>Tired</span></button>
+        <button class="mood" data-mood="Quiet"><span class="emoji">🌙</span><span>Quiet</span></button>
+      </div>
+      <div class="field" style="margin-top:15px"><label>Catatan (opsional)</label><textarea id="moodNote" placeholder="Hari ini rasanya..."></textarea></div>
+      <button class="btn btn-primary" style="margin-top:12px" id="saveMood">Save mood ✦</button>
+    </div>
+  </section>
+
+  <section class="page" id="timeline">
+    <div class="eyebrow">our little timeline</div><h1>Things that happened.</h1><p class="lead">Edit isi timeline langsung di HTML. Ini sengaja dibuat sederhana supaya gampang kamu personalisasi.</p>
+    <div class="card" style="margin-top:20px">
+      <div class="timeline">
+        <div class="titem"><time>CHAPTER 01</time><h3>First conversation</h3><p>Tulis awal cerita atau kapan mulai sering ngobrol.</p></div>
+        <div class="titem"><time>CHAPTER 02</time><h3>The random phase</h3><p>Masukkan momen lucu, inside joke, atau kejadian random yang cuma kalian pahami.</p></div>
+        <div class="titem"><time>CHAPTER 03</time><h3>A memory worth keeping</h3><p>Hubungkan dengan salah satu dari dua memory di halaman Memory Lane.</p></div>
+        <div class="titem"><time>NOW</time><h3>Still collecting little things</h3><p>Karena beberapa pertemanan justru terasa spesial dari hal-hal kecil.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">Made as a personal friendship scrapbook • not a public profile</div>
+</main>
+</div>
+
+<div class="mobile-nav">
+  <button class="active" data-page="home"><span>⌂</span>Home</button>
+  <button data-page="photos"><span>◫</span>Photos</button>
+  <button data-page="videos"><span>▶</span>Videos</button>
+  <button data-page="qa"><span>?</span>Q&A</button>
+  <button data-page="message"><span>✉</span>Message</button>
+</div>
+
+<div class="toast" id="toast"></div>
+<audio id="bgMusic" loop preload="none"><source src="assets/music.mp3" type="audio/mpeg"></audio>
+
+<script>
+/* ==========================================================
+   FITRIULFA FRIENDSHIP DASHBOARD
+   GitHub Pages frontend + Google Apps Script backend
+   ========================================================== */
+
+const CONFIG = {
+  API_URL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  APP_TOKEN: "FITRIULFA_2026"
+};
+
+const QUESTIONS = [
+  {id:"q01", category:"personal", text:"Sekarang lagi dekat atau sering ngobrol dengan siapa?"},
+  {id:"q02", category:"personal", text:"Ada seseorang yang akhir-akhir ini sering kepikiran?"},
+  {id:"q03", category:"personal", text:"Kalau ada orang yang kamu suka, biasanya kamu kasih kode atau diam?"},
+  {id:"q04", category:"personal", text:"Pernah nggak tiba-tiba suka sama seseorang tanpa direncanakan?"},
+  {id:"q05", category:"personal", text:"Kalau seseorang dari masa lalu datang lagi, kamu bakal kasih kesempatan?"},
+  {id:"q06", category:"personal", text:"Siapa yang sampai sekarang masih kamu sayang?"},
+  {id:"q07", category:"personal", text:"Ada seseorang yang sebenarnya belum benar-benar kamu lupakan?"},
+  {id:"q08", category:"personal", text:"Saat ini kamu sebenarnya sedang membuka hati atau masih nyaman sendiri?"},
+  {id:"q09", category:"personal", text:"Apa yang kamu cari dari seseorang yang ingin dekat denganmu?"},
+  {id:"q10", category:"fun", text:"Hal kecil apa yang paling gampang bikin mood kamu balik bagus?"},
+  {id:"q11", category:"fun", text:"Kalau bisa mengulang satu hari, kamu mau mengulang hari yang mana?"},
+  {id:"q12", category:"fun", text:"Tiga kata yang paling menggambarkan dirimu sekarang?"},
+  {id:"q13", category:"fun", text:"Kalau hidupmu punya soundtrack hari ini, lagunya seperti apa?"},
+  {id:"q14", category:"fun", text:"Apa kebiasaan random kamu yang mungkin orang lain nggak tahu?"},
+  {id:"q15", category:"friendship", text:"Menurutmu, apa yang bikin sebuah pertemanan bisa terasa nyaman?"},
+  {id:"q16", category:"friendship", text:"Apa satu hal yang kamu hargai dari teman dekat?"},
+  {id:"q17", category:"friendship", text:"Lebih suka teman yang sering chat atau yang jarang tapi selalu ada saat dibutuhkan?"}
+];
+
+let currentQuestion = 0;
+let selectedMood = "";
+
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
+  document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="qa") loadQuestion();
+  if(id==="message") loadRecentMessages();
+}
+document.querySelectorAll("[data-page]").forEach(btn=>btn.addEventListener("click",()=>showPage(btn.dataset.page)));
+
+function toast(msg, good=true){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.style.background=good?"#24222b":"#9a4052";
+  el.classList.add("show"); setTimeout(()=>el.classList.remove("show"),2800);
+}
+function apiReady(){return CONFIG.API_URL && !CONFIG.API_URL.includes("PASTE_YOUR");}
+
+async function apiGet(action, extra={}){
+  if(!apiReady()) throw new Error("API URL belum diisi.");
+  const qs=new URLSearchParams({action,...extra});
+  const res=await fetch(CONFIG.API_URL+"?"+qs.toString(),{method:"GET",cache:"no-store"});
+  const text=await res.text(); let data;
+  try{data=JSON.parse(text)}catch(e){throw new Error("Respons server bukan JSON.");}
+  if(!data.ok) throw new Error(data.message||"Server error");
+  return data;
+}
+async function apiPost(action,payload={}){
+  if(!apiReady()) throw new Error("API URL belum diisi.");
+  const body=JSON.stringify({action,token:CONFIG.APP_TOKEN,...payload});
+  const res=await fetch(CONFIG.API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body});
+  const text=await res.text(); let data;
+  try{data=JSON.parse(text)}catch(e){throw new Error("Respons server bukan JSON.");}
+  if(!data.ok) throw new Error(data.message||"Server error");
+  return data;
+}
+
+function loadQuestion(){
+  currentQuestion=Math.floor(Math.random()*QUESTIONS.length);
+  const q=QUESTIONS[currentQuestion];
+  document.getElementById("qNumber").textContent=`Question ${currentQuestion+1} / ${QUESTIONS.length} • ${q.category}`;
+  document.getElementById("questionText").textContent=q.text;
+  document.getElementById("answerText").value="";
+  document.getElementById("answerStatus").innerHTML="";
+}
+document.getElementById("skipQuestion").onclick=loadQuestion;
+document.getElementById("submitAnswer").onclick=async()=>{
+  const q=QUESTIONS[currentQuestion], answer=document.getElementById("answerText").value.trim();
+  if(!answer){toast("Isi jawaban dulu ya.",false);return}
+  const btn=document.getElementById("submitAnswer"); btn.disabled=true; btn.textContent="Saving...";
+  try{
+    await apiPost("saveAnswer",{questionId:q.id,question:q.text,category:q.category,answer});
+    toast("Jawaban berhasil tersimpan ✦");
+    document.getElementById("answerText").value="";
+    setTimeout(loadQuestion,500);
+    loadDashboard();
+  }catch(e){toast(e.message,false)}
+  finally{btn.disabled=false;btn.textContent="Save answer ✦"}
+};
+
+document.getElementById("messageForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const text=document.getElementById("messageText").value.trim();
+  if(!text)return;
+  const btn=e.target.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Sending...";
+  try{
+    await apiPost("saveMessage",{
+      name:document.getElementById("messageName").value.trim()||"Fitriulfa",
+      category:document.getElementById("messageCategory").value,
+      message:text
+    });
+    e.target.reset();document.getElementById("messageName").value="Fitriulfa";
+    toast("Pesan sudah masuk ke server ✦");loadRecentMessages();loadDashboard();
+  }catch(err){toast(err.message,false)}
+  finally{btn.disabled=false;btn.textContent="Kirim ke server ✦"}
+});
+
+document.querySelectorAll(".mood").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".mood").forEach(x=>x.classList.remove("selected"));
+  b.classList.add("selected");selectedMood=b.dataset.mood;
+});
+document.getElementById("saveMood").onclick=async()=>{
+  if(!selectedMood){toast("Pilih mood dulu.",false);return}
+  const btn=document.getElementById("saveMood");btn.disabled=true;btn.textContent="Saving...";
+  try{
+    await apiPost("saveMood",{mood:selectedMood,note:document.getElementById("moodNote").value.trim()});
+    toast("Mood berhasil disimpan ✦");loadDashboard();
+  }catch(e){toast(e.message,false)}
+  finally{btn.disabled=false;btn.textContent="Save mood ✦"}
+};
+
+async function loadDashboard(){
+  if(!apiReady()){
+    document.getElementById("statMessages").textContent="—";
+    document.getElementById("statAnswers").textContent="—";
+    document.getElementById("statMood").textContent="—";
+    return;
+  }
+  try{
+    const d=await apiGet("getDashboard");
+    document.getElementById("statMessages").textContent=d.stats.messages;
+    document.getElementById("statAnswers").textContent=d.stats.answers;
+    document.getElementById("statMood").textContent=d.stats.mood||"—";
+  }catch(e){console.warn(e)}
+}
+async function loadRecentMessages(){
+  const box=document.getElementById("recentMessages");
+  if(!apiReady()){box.innerHTML='<div class="empty">Isi API_URL terlebih dahulu untuk menampilkan pesan dari server.</div>';return}
+  box.innerHTML='<div class="empty">Loading...</div>';
+  try{
+    const d=await apiGet("getMessages",{limit:8});
+    if(!d.items.length){box.innerHTML='<div class="empty">Belum ada pesan tersimpan.</div>';return}
+    box.innerHTML=d.items.map(x=>`<div class="result"><b>${escapeHtml(x.name||"Anonymous")} · ${escapeHtml(x.category||"Random")}</b><p>${escapeHtml(x.message||"")}</p></div>`).join("");
+  }catch(e){box.innerHTML=`<div class="empty">${escapeHtml(e.message)}</div>`}
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+document.getElementById("refreshBtn").onclick=()=>{loadDashboard();loadRecentMessages();toast("Dashboard refreshed.")};
+document.getElementById("searchInput").addEventListener("input",e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll(".page.active .card").forEach(c=>c.style.outline=q && c.innerText.toLowerCase().includes(q)?"2px solid #c8b9e2":"");
+});
+
+const music=document.getElementById("bgMusic"), musicBtn=document.getElementById("musicBtn");
+musicBtn.onclick=async()=>{
+  try{
+    if(music.paused){await music.play();musicBtn.classList.add("music-on");musicBtn.textContent="♫";toast("Music on ✦")}
+    else{music.pause();musicBtn.classList.remove("music-on");toast("Music off")}
+  }catch(e){toast("Tambahkan assets/music.mp3 dulu.",false)}
+};
+
+document.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{
+  img.style.background="linear-gradient(135deg,#ece7f5,#f3e4e8)";
+  img.alt="Upload foto di folder assets";
+}));
+
+loadDashboard();
+loadRecentMessages();
+loadQuestion();
+</script>
+</body>
+</html>
