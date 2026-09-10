@@ -50,25 +50,6 @@ h3{font-size:15px}
 .lead{color:var(--muted);font-size:13px;line-height:1.7;margin-top:10px}
 .hero{position:relative;min-height:390px;border-radius:32px;overflow:hidden;background:#2f2938;margin-bottom:18px;box-shadow:var(--shadow)}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
-.hero-slides{position:absolute;inset:0;z-index:0}
-.hero-slide{position:absolute;inset:0;opacity:0;transform:scale(1.045);transition:opacity .9s ease,transform 7s ease}
-.hero-slide.active{opacity:1;transform:scale(1)}
-.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1}
-.hero-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,19,31,.86),rgba(44,25,45,.42) 50%,rgba(44,25,45,.08));}
-.hero-dots{position:absolute;z-index:4;right:28px;bottom:24px;display:flex;gap:7px}
-.hero-dot{width:9px;height:9px;border:0;border-radius:50%;background:rgba(255,255,255,.45);padding:0;transition:.25s}
-.hero-dot.active{width:27px;border-radius:99px;background:#fff}
-.hero-arrow{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(35,24,37,.34);backdrop-filter:blur(10px);color:#fff;font-size:22px;display:grid;place-items:center;transition:.25s}
-.hero-arrow:hover{background:rgba(255,255,255,.2);transform:translateY(-50%) scale(1.06)}
-.hero-arrow.prev{left:20px}.hero-arrow.next{right:20px}
-.hero-photo-label{position:absolute;z-index:4;right:26px;top:22px;padding:8px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);color:#fff;font-size:10px;letter-spacing:1px;text-transform:uppercase}
-.music-player{display:flex;align-items:center;gap:10px;min-width:min(520px,52vw);padding:6px 9px 6px 7px;border:1px solid rgba(220,205,220,.75);background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-radius:17px;box-shadow:0 10px 30px rgba(65,42,70,.08)}
-.music-cover{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#d98d9d,#7562a8);display:grid;place-items:center;color:#fff;flex:none}
-.music-meta{min-width:130px;flex:1}.music-meta strong{display:block;font-size:11px}.music-meta span{display:block;font-size:9px;color:#9993a0;margin-top:2px}
-.music-controls{display:flex;align-items:center;gap:3px}.music-controls button{width:30px;height:30px;border:0;background:transparent;border-radius:9px;color:#5d5364}.music-controls button:hover{background:#f2ebf4}.music-controls .play{background:#6f5aa8;color:#fff;width:34px;height:34px}
-.music-select{max-width:135px;border:0;outline:0;background:transparent;color:#665d6a;font-size:10px}
-.music-progress{position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:99px;background:#ece4ec;overflow:hidden}.music-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#d98d9d,#7562a8);transition:width .15s linear}
-
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,22,31,.88) 0%,rgba(34,27,39,.5) 47%,rgba(34,27,39,.08) 100%)}
 .hero-content{position:relative;z-index:2;max-width:650px;color:white;padding:62px 55px}
 .hero-content .eyebrow{color:#e4d7ff}
@@ -149,8 +130,7 @@ h3{font-size:15px}
 .date-caption{font:600 16px "Playfair Display",serif;margin-top:11px}
 .date-caption small{display:block;font:400 10px "DM Sans",sans-serif;color:var(--muted);margin-top:4px}
 .camera-status{font-size:11px;color:var(--muted);line-height:1.55;margin-top:10px}
-@media(max-width:900px){
-  .music-player{min-width:0;width:100%}.music-meta{display:none}.music-select{max-width:105px}.hero-arrow{display:none}.camera-layout{grid-template-columns:1fr}}
+@media(max-width:900px){.camera-layout{grid-template-columns:1fr}}
 @media(max-width:760px){.shots{grid-template-columns:1fr 1fr}.camera-actions .btn{min-width:110px}}
 
 
@@ -178,8 +158,7 @@ h3{font-size:15px}
 .upload-preview{width:100%;aspect-ratio:4/3;border-radius:15px;object-fit:cover;background:#eee9e5;display:none}
 .file-label{display:flex;align-items:center;justify-content:center;min-height:100px;border-radius:15px;background:#f6eff2;color:#8a6d7a;font-size:11px;text-align:center;padding:15px;cursor:pointer}
 .file-label:hover{background:#f1e7eb}.file-label input{display:none}
-@media(max-width:900px){
-  .music-player{min-width:0;width:100%}.music-meta{display:none}.music-select{max-width:105px}.hero-arrow{display:none}.special-grid{grid-template-columns:1fr}.activity-layout{grid-template-columns:1fr}}
+@media(max-width:900px){.special-grid{grid-template-columns:1fr}.activity-layout{grid-template-columns:1fr}}
 
 
 .sync-layout{display:grid;grid-template-columns:1fr .82fr;gap:16px;margin-top:20px}
@@ -198,8 +177,7 @@ h3{font-size:15px}
 .partner-photo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .partner-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:15px;background:#eee}
 .sync-help{font-size:11px;color:var(--muted);line-height:1.65;margin-top:12px}
-@media(max-width:900px){
-  .music-player{min-width:0;width:100%}.music-meta{display:none}.music-select{max-width:105px}.hero-arrow{display:none}.sync-layout{grid-template-columns:1fr}}
+@media(max-width:900px){.sync-layout{grid-template-columns:1fr}}
 
 .rtc-diagnostics{margin-top:10px;padding:11px 13px;border:1px solid var(--line);border-radius:14px;background:#fbfaf8}
 .diag-title{font-size:9px;letter-spacing:1.4px;color:#9b96a1;font-weight:800;margin-bottom:8px}.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px;font-size:10px;color:#aaa4ad}.diag-grid span.good{color:#5e9273;font-weight:700}.turn-settings{margin-top:10px;border:1px solid var(--line);border-radius:15px;background:#fff;padding:10px 12px}.turn-settings summary{cursor:pointer;font-size:11px;font-weight:700;color:#5f566b}.turn-settings p,.turn-note{font-size:10px;line-height:1.55;color:var(--muted);margin:8px 0}.turn-settings textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font:10px/1.45 monospace;background:#faf9f7;resize:vertical}.turn-settings .btn{min-width:0}.footer-note{text-align:center;color:#aaa4ad;font-size:10px;margin-top:35px}
@@ -450,39 +428,18 @@ h1,h2{color:#302638}
   <div class="topbar">
     <div class="search"><span>⌕</span><input id="searchInput" placeholder="Cari di dashboard..."></div>
     <div class="actions">
-      <div class="music-player" id="musicPlayer">
-        <div class="music-cover">♫</div>
-        <div class="music-meta"><strong id="musicTitle">Little Moments</strong><span id="musicArtist">local playlist</span></div>
-        <select class="music-select" id="musicSelect" aria-label="Pilih musik">
-          <option value="local">Music.mp3</option>
-          <option value="online1">Romantic — PaulYudin · online</option>
-          <option value="online2">SoundHelix 1 · online</option>
-          <option value="online3">SoundHelix 2 · online</option>
-          <option value="online4">SoundHelix 3 · online</option>
-        </select>
-        <div class="music-controls">
-          <button id="musicPrev" title="Sebelumnya">‹</button>
-          <button class="play" id="musicBtn" title="Putar / jeda">▶</button>
-          <button id="musicNext" title="Berikutnya">›</button>
-        </div>
-        <div class="music-progress"><i id="musicProgress"></i></div>
-      </div>
+      <button class="iconbtn" id="musicBtn" title="Music">♫</button>
       <button class="iconbtn" id="refreshBtn" title="Refresh">↻</button>
     </div>
   </div>
 
   <section class="page active" id="home">
-    <div class="hero" id="heroBanner">
-      <div class="hero-slides" id="heroSlides"></div>
-      <div class="hero-photo-label" id="heroPhotoLabel">01 / 08 · little moment</div>
-      <button class="hero-arrow prev" id="heroPrev" aria-label="Foto sebelumnya">‹</button>
-      <button class="hero-arrow next" id="heroNext" aria-label="Foto berikutnya">›</button>
-      <div class="hero-dots" id="heroDots"></div>
+    <div class="hero">
+      <img src="fitriulfa-01.jpg" alt="Fitriulfa">
       <div class="hero-content">
         <div class="eyebrow">A little corner on the internet</div>
         <h1>Hi, Fitriulfa ✦</h1>
-        <p class="lead">Karena ada orang-orang yang kehadirannya terlalu berharga untuk cuma lewat begitu saja. Jadi, dibuatlah satu sudut kecil untuk menyimpan senyum, cerita, foto, video, dan hari-hari yang pernah terasa lebih indah.</p>
-        <div class="romantic-line">“Beberapa orang tidak perlu menjadi apa-apa untuk tetap menjadi seseorang yang sangat berarti.”</div>
+        <p class="lead">Karena ada orang-orang yang kehadirannya terlalu berharga untuk cuma lewat begitu saja. Jadi, dibuatlah satu sudut kecil untuk menyimpan senyum, cerita, foto, video, dan hari-hari yang pernah terasa lebih indah.</p><div class="romantic-line">“Beberapa orang tidak perlu menjadi apa-apa untuk tetap menjadi seseorang yang sangat berarti.”</div>
         <div class="signature">for someone who makes ordinary moments feel a little less ordinary. ✦</div>
       </div>
     </div>
@@ -783,7 +740,7 @@ h1,h2{color:#302638}
 </div>
 
 <div class="toast" id="toast"></div>
-<audio id="bgMusic" loop preload="metadata" crossorigin="anonymous"><source src="music.mp3" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="none"><source src="music.mp3" type="audio/mpeg"></audio>
 
 <script>
 /* ==========================================================
@@ -795,67 +752,6 @@ const CONFIG = {
   API_URL: "https://script.google.com/macros/s/AKfycbzOBQQ3gnJUS5XbokKzJP4OlDrU-kZCsEQtzwZPbBHEY8SRTtMy2j1WK0ujYQG49BDe/exec",
   APP_TOKEN: "FITRIULFA_2026"
 };
-
-/* ==========================================================
-   HERO PHOTO SLIDESHOW + ROMANTIC MUSIC PLAYER
-   Banner mengambil foto lokal yang sudah ada di repo.
-   Musik dapat berganti antara file lokal dan beberapa stream MP3 publik.
-   ========================================================== */
-const HERO_PHOTOS = [
-  ["fitriulfa-01.jpg","01 / 08 · little moment"],
-  ["fitriulfa-02.jpg","02 / 08 · little moment"],
-  ["fitriulfa-03.jpg","03 / 08 · little moment"],
-  ["fitriulfa-04.jpg","04 / 08 · little moment"],
-  ["fitriulfa-05.jpg","05 / 08 · little moment"],
-  ["fitriulfa-06.jpg","06 / 08 · little moment"],
-  ["fitriulfa-07.jpg","07 / 08 · little moment"],
-  ["fitriulfa-08.jpg","08 / 08 · little moment"]
-];
-let heroIndex=0, heroTimer=null;
-function renderHero(){
-  const wrap=document.getElementById("heroSlides"), dots=document.getElementById("heroDots");
-  if(!wrap||!dots) return;
-  wrap.innerHTML=HERO_PHOTOS.map((p,i)=>`<div class="hero-slide ${i===heroIndex?'active':''}"><img src="${p[0]}" alt="Fitriulfa ${i+1}"></div>`).join("");
-  dots.innerHTML=HERO_PHOTOS.map((_,i)=>`<button class="hero-dot ${i===heroIndex?'active':''}" data-hero="${i}" aria-label="Foto ${i+1}"></button>`).join("");
-  document.getElementById("heroPhotoLabel").textContent=HERO_PHOTOS[heroIndex][1];
-  dots.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{heroIndex=Number(b.dataset.hero);renderHero();restartHeroTimer();}));
-}
-function moveHero(dir){heroIndex=(heroIndex+dir+HERO_PHOTOS.length)%HERO_PHOTOS.length;renderHero();restartHeroTimer();}
-function restartHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(()=>moveHero(1),6500);}
-
-const MUSIC_TRACKS=[
-  {id:"local",title:"Little Moments",artist:"music.mp3 · local",src:"music.mp3"},
-  {id:"online1",title:"Romantic — Romantic Music",artist:"PaulYudin · Pixabay",src:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",credit:"https://pixabay.com/music/upbeat-romantic-romantic-music-493488/"},
-  {id:"online2",title:"Soft Daydream",artist:"SoundHelix · online",src:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"},
-  {id:"online3",title:"Warm Memories",artist:"SoundHelix · online",src:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"},
-  {id:"online4",title:"Late Night Feelings",artist:"SoundHelix · online",src:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"}
-];
-let musicIndex=0;
-function setMusic(index,autoplay=false){
-  musicIndex=(index+MUSIC_TRACKS.length)%MUSIC_TRACKS.length;
-  const t=MUSIC_TRACKS[musicIndex], audio=document.getElementById("bgMusic");
-  audio.src=t.src; audio.load();
-  document.getElementById("musicTitle").textContent=t.title;
-  document.getElementById("musicArtist").textContent=t.artist;
-  const sel=document.getElementById("musicSelect"); if(sel) sel.value=t.id;
-  if(autoplay) audio.play().then(updateMusicUI).catch(()=>{});
-}
-function updateMusicUI(){
-  const audio=document.getElementById("bgMusic"), btn=document.getElementById("musicBtn");
-  if(!audio||!btn)return;
-  btn.textContent=audio.paused?"▶":"Ⅱ";
-  btn.classList.toggle("music-on",!audio.paused);
-  const p=document.getElementById("musicProgress"); if(p&&audio.duration)p.style.width=((audio.currentTime/audio.duration)*100)+"%";
-}
-function bindMusic(){
-  const audio=document.getElementById("bgMusic");
-  document.getElementById("musicBtn")?.addEventListener("click",()=>audio.paused?audio.play().then(updateMusicUI).catch(()=>{}):audio.pause());
-  document.getElementById("musicPrev")?.addEventListener("click",()=>setMusic(musicIndex-1,true));
-  document.getElementById("musicNext")?.addEventListener("click",()=>setMusic(musicIndex+1,true));
-  document.getElementById("musicSelect")?.addEventListener("change",e=>{const idx=MUSIC_TRACKS.findIndex(t=>t.id===e.target.value);setMusic(idx,true);});
-  audio.addEventListener("play",updateMusicUI);audio.addEventListener("pause",updateMusicUI);audio.addEventListener("timeupdate",updateMusicUI);
-  audio.addEventListener("ended",()=>setMusic(musicIndex+1,true));
-}
 
 const QUESTIONS = [
   {id:"q01", category:"pelan-pelan", text:"Kalau hari ini ada seseorang yang ingin benar-benar tahu kabarmu, kamu ingin dia bertanya apa?"},
@@ -1460,7 +1356,6 @@ loadQuestion();
   });
 })();
 
-document.addEventListener("DOMContentLoaded",()=>{renderHero();restartHeroTimer();bindMusic();document.getElementById("heroPrev")?.addEventListener("click",()=>moveHero(-1));document.getElementById("heroNext")?.addEventListener("click",()=>moveHero(1));});
 </script>
 </body>
 </html>
