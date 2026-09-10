@@ -262,11 +262,138 @@ body:before{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:-3;
 
 .photo-booth-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;background:linear-gradient(135deg,#f8f1f7,#eee9f5);color:#6d6476;text-align:center}.photo-booth-placeholder strong{font-size:18px;letter-spacing:.14em}.photo-booth-placeholder small{font-size:12px;opacity:.72;max-width:180px}.live-pane{position:relative;overflow:hidden}.live-pane>span{position:absolute;left:12px;bottom:10px;padding:5px 9px;border-radius:999px;background:rgba(20,18,25,.58);color:#fff;font-size:12px;z-index:2}.partner-photo small{display:block;margin-top:7px;text-align:center;font-size:12px;color:#766d79}.sync-help{margin-top:14px;padding:13px 15px;border:1px solid rgba(117,98,168,.16);border-radius:16px;background:rgba(255,255,255,.55);font-size:13px;line-height:1.6}.rtc-diagnostics .diag-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 </style>
+
+<style>
+/* ===== Luxe Romantic Color Upgrade ===== */
+:root{
+  --bg:#fbf7fa;
+  --surface:#ffffff;
+  --surface2:#f7eef4;
+  --ink:#292331;
+  --muted:#766f7d;
+  --line:#eadde7;
+  --purple:#7657a8;
+  --purple2:#b493d2;
+  --rose:#d96f91;
+  --rose2:#ef9fb6;
+  --berry:#9f416d;
+  --gold:#d2ad68;
+  --peach:#f1b38e;
+  --lav:#c9b7ee;
+  --shadow:0 20px 60px rgba(94,55,94,.11);
+  --r:24px;
+}
+body{
+  background:
+    radial-gradient(circle at 8% 5%,rgba(241,179,142,.25),transparent 25%),
+    radial-gradient(circle at 92% 8%,rgba(217,111,145,.20),transparent 27%),
+    radial-gradient(circle at 50% 55%,rgba(201,183,238,.16),transparent 34%),
+    linear-gradient(135deg,#fffafc 0%,#f8f2fb 48%,#fff7f1 100%);
+}
+body:after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-4;opacity:.34;
+  background-image:radial-gradient(rgba(118,87,168,.10) .7px,transparent .7px);
+  background-size:18px 18px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+.sidebar{
+  background:linear-gradient(180deg,rgba(255,255,255,.91),rgba(252,244,250,.82));
+  border-right:1px solid rgba(217,111,145,.16);
+  box-shadow:12px 0 45px rgba(115,75,110,.035);
+}
+.brand .dot{
+  background:linear-gradient(135deg,#7657a8 0%,#c36f9c 52%,#e8ae78 100%);
+  box-shadow:0 10px 30px rgba(118,87,168,.28),0 0 0 7px rgba(217,111,145,.055);
+}
+.brand h2{color:#302738}
+.nav button:hover,.nav button.active{
+  background:linear-gradient(100deg,rgba(118,87,168,.13),rgba(217,111,145,.12));
+  color:var(--berry);box-shadow:inset 3px 0 0 var(--rose);
+}
+.search,.iconbtn,.card,.camera-card,.mobile-nav{
+  border-color:rgba(205,176,201,.42);
+}
+.search:focus-within{box-shadow:0 0 0 4px rgba(217,111,145,.07);border-color:#d9a5b7}
+.iconbtn:hover{border-color:#d9a5b7;color:var(--berry)}
+.music-on{background:linear-gradient(135deg,#f1eafa,#fbe8ef)!important;color:var(--berry)!important}
+.eyebrow{color:var(--berry)}
+h1,h2{color:#302638}
+.hero{
+  background:linear-gradient(135deg,#37283e,#5a3451 55%,#7657a8);
+  box-shadow:0 28px 75px rgba(93,48,86,.20);
+}
+.hero:after{
+  background:
+    linear-gradient(90deg,rgba(37,25,41,.92) 0%,rgba(67,39,60,.60) 45%,rgba(118,87,168,.13) 100%),
+    radial-gradient(circle at 82% 25%,rgba(255,201,220,.24),transparent 22%);
+}
+.hero:before{
+  content:"";position:absolute;width:360px;height:360px;right:-90px;top:-120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,205,222,.25),rgba(205,171,238,.10) 40%,transparent 70%);
+  filter:blur(3px);animation:heroAura 8s ease-in-out infinite;z-index:1;
+}
+@keyframes heroAura{0%,100%{transform:scale(.92) translate(0,0);opacity:.65}50%{transform:scale(1.12) translate(-20px,18px);opacity:1}}
+.hero-content .eyebrow{color:#ffd8e6}
+.hero-content .lead{color:rgba(255,248,251,.84)}
+.romantic-line{color:#ffd9e6;text-shadow:0 2px 18px rgba(255,137,177,.15)}
+.signature{color:#f7cddc}
+.stats .card{position:relative;overflow:hidden}
+.stats .card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--rose),var(--peach));opacity:.82}
+.stats .card:nth-child(2):before{background:linear-gradient(90deg,#a66fd0,#d978a0)}
+.stats .card:nth-child(3):before{background:linear-gradient(90deg,#d78c65,#e5bd71)}
+.stats .card:nth-child(4):before{background:linear-gradient(90deg,#71a68c,#8f78c4)}
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(255,248,252,.91));
+  box-shadow:0 9px 34px rgba(93,56,93,.055);
+}
+.card:hover,.feature:hover,.result:hover,.photo-card:hover,.video-card:hover{
+  box-shadow:0 28px 70px rgba(105,57,97,.15);
+}
+.btn-primary{
+  background:linear-gradient(135deg,#7657a8,#b45d89);
+  box-shadow:0 10px 26px rgba(118,87,168,.24);
+}
+.btn-primary:hover{box-shadow:0 14px 32px rgba(180,93,137,.27)}
+.btn-soft{background:linear-gradient(135deg,#f0eafb,#fbe8ef);color:var(--berry)}
+.btn-ghost{background:rgba(255,255,255,.84)}
+.photo,.video-card{background:linear-gradient(145deg,#fff,#fdf4f8)}
+.photo:after{
+  content:"♡";position:absolute;right:12px;top:12px;width:31px;height:31px;border-radius:50%;display:grid;place-items:center;
+  color:#fff;background:rgba(112,65,103,.48);backdrop-filter:blur(8px);opacity:0;transform:scale(.75);transition:.3s;
+}
+.photo:hover:after{opacity:1;transform:scale(1)}
+.photo img{filter:saturate(1.05) contrast(1.01)}
+.question{
+  background:
+    radial-gradient(circle at 95% 5%,rgba(217,111,145,.15),transparent 22%),
+    radial-gradient(circle at 5% 90%,rgba(118,87,168,.14),transparent 26%),
+    linear-gradient(135deg,#f2ecfb,#fff1f5 55%,#fff8ef);
+  border-color:#ead8e7;box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+}
+.question h2{color:#3a2940}
+.mood{background:linear-gradient(145deg,#fff,#fff8fb)}
+.mood:hover,.mood.selected{border-color:#d9a5b7;background:linear-gradient(135deg,#f4edfb,#fdebf1);color:var(--berry);box-shadow:0 10px 25px rgba(129,74,112,.09)}
+.titem:before{background:linear-gradient(135deg,var(--purple),var(--rose));box-shadow:0 0 0 5px #f2eaf7}
+.plush-float{filter:drop-shadow(0 16px 22px rgba(117,62,91,.20));}
+.plush-body{background:linear-gradient(145deg,#f6c9d7,#d99bb0)}
+.plush-heart{color:#a84268}
+.plush-tooltip{background:linear-gradient(135deg,rgba(57,38,58,.95),rgba(117,67,96,.94));box-shadow:0 10px 30px rgba(71,40,66,.2)}
+.petal{filter:drop-shadow(0 7px 10px rgba(133,62,91,.18));}
+.sparkle{color:rgba(255,220,235,.70);text-shadow:0 0 12px rgba(255,173,207,.42)}
+.ambient-glow.one{background:#ee7fa3;opacity:.21}.ambient-glow.two{background:#a984e4;opacity:.20}.ambient-glow.three{background:#f1b38e;opacity:.17}
+.mobile-nav button.active{background:linear-gradient(135deg,#f0eafb,#fbe8ef);color:var(--berry)}
+.heart-divider{color:#c56f90;text-shadow:0 3px 12px rgba(197,111,144,.15)}
+.footer-note{color:#aa899d}
+@media(max-width:760px){
+ .hero{box-shadow:0 22px 55px rgba(93,48,86,.16)}
+ .hero:before{width:260px;height:260px;right:-90px;top:-60px}
+}
+</style>
 </head>
 <body>
 <div class="romantic-atmosphere" aria-hidden="true">
   <div class="ambient-glow one"></div><div class="ambient-glow two"></div><div class="ambient-glow three"></div>
-  <div class="petals"><span class="petal">🌹</span><span class="petal">♡</span><span class="petal">🌸</span><span class="petal">✦</span><span class="petal">🌹</span><span class="petal">♡</span><span class="petal">🌸</span><span class="petal">✦</span></div>
+  <div class="petals"><span class="petal">🌹</span><span class="petal">♡</span><span class="petal">🌸</span><span class="petal">✦</span><span class="petal">🌷</span><span class="petal">♥</span><span class="petal">🦋</span><span class="petal">✧</span></div>
   <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span><span class="sparkle s4">✧</span>
 </div>
 <div class="plush-float" id="plushFriend" title="Klik aku ✦" aria-label="Boneka kecil">
@@ -1203,7 +1330,7 @@ musicBtn.onclick=async()=>{
 
 document.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{
   img.style.background="linear-gradient(135deg,#ece7f5,#f3e4e8)";
-  img.alt="Upload foto di folder assets";
+  img.alt="Pastikan file foto tersedia di folder yang sama";
 }));
 
 loadDashboard();
