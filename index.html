@@ -575,27 +575,73 @@ const CONFIG = {
 };
 
 const QUESTIONS = [
-  {id:"q01", category:"personal", text:"Sekarang lagi dekat atau sering ngobrol dengan siapa?"},
-  {id:"q02", category:"personal", text:"Ada seseorang yang akhir-akhir ini sering kepikiran?"},
-  {id:"q03", category:"personal", text:"Kalau ada orang yang kamu suka, biasanya kamu kasih kode atau diam?"},
-  {id:"q04", category:"personal", text:"Pernah nggak tiba-tiba suka sama seseorang tanpa direncanakan?"},
-  {id:"q05", category:"personal", text:"Kalau seseorang dari masa lalu datang lagi, kamu bakal kasih kesempatan?"},
-  {id:"q06", category:"personal", text:"Siapa yang sampai sekarang masih kamu sayang?"},
-  {id:"q07", category:"personal", text:"Ada seseorang yang sebenarnya belum benar-benar kamu lupakan?"},
-  {id:"q08", category:"personal", text:"Saat ini kamu sebenarnya sedang membuka hati atau masih nyaman sendiri?"},
-  {id:"q09", category:"personal", text:"Apa yang kamu cari dari seseorang yang ingin dekat denganmu?"},
-  {id:"q10", category:"fun", text:"Hal kecil apa yang paling gampang bikin mood kamu balik bagus?"},
-  {id:"q11", category:"fun", text:"Kalau bisa mengulang satu hari, kamu mau mengulang hari yang mana?"},
-  {id:"q12", category:"fun", text:"Tiga kata yang paling menggambarkan dirimu sekarang?"},
-  {id:"q13", category:"fun", text:"Kalau hidupmu punya soundtrack hari ini, lagunya seperti apa?"},
-  {id:"q14", category:"fun", text:"Apa kebiasaan random kamu yang mungkin orang lain nggak tahu?"},
-  {id:"q15", category:"friendship", text:"Menurutmu, apa yang bikin sebuah pertemanan bisa terasa nyaman?"},
-  {id:"q16", category:"friendship", text:"Apa satu hal yang kamu hargai dari teman dekat?"},
-  {id:"q17", category:"friendship", text:"Lebih suka teman yang sering chat atau yang jarang tapi selalu ada saat dibutuhkan?"}
+  {id:"q01", category:"about you", text:"Hal kecil apa yang akhir-akhir ini paling sering bikin kamu senyum?"},
+  {id:"q02", category:"about you", text:"Kalau sedang capek, biasanya kamu paling suka melakukan apa?"},
+  {id:"q03", category:"about you", text:"Apa satu hal sederhana yang selalu berhasil memperbaiki harimu?"},
+  {id:"q04", category:"about you", text:"Kamu lebih suka suasana ramai atau momen tenang berdua dengan orang terdekat?"},
+  {id:"q05", category:"about you", text:"Kalau punya satu hari bebas tanpa kewajiban, kamu ingin menghabiskannya bagaimana?"},
+  {id:"q06", category:"about you", text:"Apa kebiasaan kecilmu yang paling kamu suka dari dirimu sendiri?"},
+  {id:"q07", category:"about you", text:"Apa hal yang belakangan ini sedang ingin kamu coba?"},
+  {id:"q08", category:"about you", text:"Kalau suasana hatimu hari ini jadi sebuah warna, warnanya apa?"},
+  {id:"q09", category:"about you", text:"Tempat seperti apa yang selalu membuatmu merasa nyaman?"},
+  {id:"q10", category:"about you", text:"Apa satu hal yang ingin kamu capai sebelum tahun ini selesai?"},
+
+  {id:"q11", category:"little things", text:"Makanan apa yang hampir selalu berhasil membuatmu senang?"},
+  {id:"q12", category:"little things", text:"Lebih suka jalan tanpa rencana atau semuanya sudah disiapkan?"},
+  {id:"q13", category:"little things", text:"Kalau bisa memilih satu lagu untuk menemani perjalanan malam, kamu pilih apa?"},
+  {id:"q14", category:"little things", text:"Hal random apa yang bisa membuatmu tertawa lama?"},
+  {id:"q15", category:"little things", text:"Apa benda kecil yang selalu kamu bawa atau susah kamu tinggalkan?"},
+  {id:"q16", category:"little things", text:"Kalau sedang ingin sendiri, biasanya kamu pergi ke mana atau melakukan apa?"},
+  {id:"q17", category:"little things", text:"Lebih suka foto candid atau foto yang sudah disiapkan dulu?"},
+  {id:"q18", category:"little things", text:"Kalau mendapat hadiah kecil tanpa alasan, kamu paling suka diberi apa?"},
+  {id:"q19", category:"little things", text:"Apa jenis percakapan yang bisa membuatmu lupa waktu?"},
+  {id:"q20", category:"little things", text:"Momen sederhana apa yang menurutmu justru paling enak dikenang?"},
+
+  {id:"q21", category:"friendship", text:"Menurutmu, apa yang membuat sebuah pertemanan terasa benar-benar nyaman?"},
+  {id:"q22", category:"friendship", text:"Kamu lebih suka teman yang banyak cerita atau yang lebih banyak mendengarkan?"},
+  {id:"q23", category:"friendship", text:"Apa hal kecil dari seorang teman yang paling mudah kamu hargai?"},
+  {id:"q24", category:"friendship", text:"Kalau sedang punya cerita penting, kamu biasanya langsung cerita atau menunggu waktu yang pas?"},
+  {id:"q25", category:"friendship", text:"Menurutmu, teman yang baik itu seperti apa?"},
+  {id:"q26", category:"friendship", text:"Apa kenangan pertemanan yang sampai sekarang masih sering kamu ingat?"},
+  {id:"q27", category:"friendship", text:"Lebih suka sering bertemu atau cukup sesekali tapi selalu terasa dekat?"},
+  {id:"q28", category:"friendship", text:"Apa satu hal yang menurutmu tidak boleh hilang dari sebuah pertemanan?"},
+  {id:"q29", category:"friendship", text:"Kalau temanmu sedang sedih, biasanya kamu memilih menemani atau memberi ruang?"},
+  {id:"q30", category:"friendship", text:"Apa arti menjadi seseorang yang bisa kamu percaya?"},
+
+  {id:"q31", category:"memories", text:"Kalau bisa mengulang satu hari yang pernah kamu jalani, hari apa yang kamu pilih?"},
+  {id:"q32", category:"memories", text:"Foto seperti apa yang paling kamu suka simpan?"},
+  {id:"q33", category:"memories", text:"Apa satu momen yang kelihatannya biasa, tapi ternyata sangat berarti?"},
+  {id:"q34", category:"memories", text:"Kalau suatu hari melihat kembali foto-foto lama, kamu ingin mengingat apa?"},
+  {id:"q35", category:"memories", text:"Apa tempat yang punya kenangan khusus buatmu?"},
+  {id:"q36", category:"memories", text:"Kalau satu kenangan bisa diputar kembali selama lima menit, kamu memilih yang mana?"},
+
+  {id:"q37", category:"just for fun", text:"Kalau besok tiba-tiba libur, kamu mau pergi ke mana?"},
+  {id:"q38", category:"just for fun", text:"Kalau hidupmu punya soundtrack minggu ini, lagu apa yang cocok?"},
+  {id:"q39", category:"just for fun", text:"Kalau bisa makan satu makanan sepuasnya hari ini, kamu pilih apa?"},
+  {id:"q40", category:"just for fun", text:"Kalau harus memilih: sunset, hujan, atau malam yang tenang?"},
+  {id:"q41", category:"just for fun", text:"Kalau bisa punya satu kemampuan baru secara instan, kamu pilih apa?"},
+  {id:"q42", category:"just for fun", text:"Kalau kita tiba-tiba punya waktu kosong seharian, menurutmu enaknya ngapain?"},
+  {id:"q43", category:"just for fun", text:"Tiga kata yang paling menggambarkan dirimu belakangan ini apa?"},
+  {id:"q44", category:"just for fun", text:"Hal paling random apa yang pernah membuatmu bahagia?"},
+  {id:"q45", category:"just for fun", text:"Kalau bisa menyimpan satu suasana hari ini selamanya, kamu ingin menyimpan yang mana?"}
 ];
 
-let currentQuestion = 0;
+let currentQuestion = Number(localStorage.getItem("fitriulfa_question_index") || 0);
 let selectedMood = "";
+
+function advanceQuestion(){
+  currentQuestion = (currentQuestion + 1) % QUESTIONS.length;
+  localStorage.setItem("fitriulfa_question_index", currentQuestion);
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q=QUESTIONS[currentQuestion];
+  document.getElementById("qNumber").textContent=`Question ${currentQuestion+1} / ${QUESTIONS.length} · ${q.category}`;
+  document.getElementById("questionText").textContent=q.text;
+  document.getElementById("answerText").value="";
+  document.getElementById("answerStatus").innerHTML="";
+}
 
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
@@ -634,14 +680,11 @@ async function apiPost(action,payload={}){
 }
 
 function loadQuestion(){
-  currentQuestion=Math.floor(Math.random()*QUESTIONS.length);
-  const q=QUESTIONS[currentQuestion];
-  document.getElementById("qNumber").textContent=`Question ${currentQuestion+1} / ${QUESTIONS.length} • ${q.category}`;
-  document.getElementById("questionText").textContent=q.text;
-  document.getElementById("answerText").value="";
-  document.getElementById("answerStatus").innerHTML="";
+  renderQuestion();
 }
-document.getElementById("skipQuestion").onclick=loadQuestion;
+document.getElementById("skipQuestion").onclick=()=>{
+  advanceQuestion();
+};
 document.getElementById("submitAnswer").onclick=async()=>{
   const q=QUESTIONS[currentQuestion], answer=document.getElementById("answerText").value.trim();
   if(!answer){toast("Isi jawaban dulu ya.",false);return}
@@ -650,7 +693,7 @@ document.getElementById("submitAnswer").onclick=async()=>{
     await apiPost("saveAnswer",{questionId:q.id,question:q.text,category:q.category,answer});
     toast("Jawaban berhasil tersimpan ✦");
     document.getElementById("answerText").value="";
-    setTimeout(loadQuestion,500);
+    setTimeout(advanceQuestion,500);
     loadDashboard();
   }catch(e){toast(e.message,false)}
   finally{btn.disabled=false;btn.textContent="Save answer ✦"}
