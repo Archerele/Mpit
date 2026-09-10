@@ -319,20 +319,20 @@ h3{font-size:15px}
   </section>
 
   <section class="page" id="qa">
-    <div class="eyebrow">get to know fitriulfa</div><h1>Questions, but make them honest.</h1><p class="lead">Jawab yang kamu nyaman jawab. Beberapa pertanyaan kecil, untuk mengenal cerita di balik senyummu.</p>
+    <div class="eyebrow">get to know fitriulfa</div><h1>Questions, but make them honest.</h1><p class="lead">Tidak semua pertanyaan harus dijawab serius. Beberapa memang sengaja dibuat sedikit menjebak. ✦</p>
     <div class="card" style="margin-top:20px">
       <div class="question">
         <div class="qnum" id="qNumber">Question</div>
         <h2 id="questionText">Loading question...</h2>
         <textarea id="answerText" placeholder="Tulis jawabanmu di sini..."></textarea>
-        <div class="q-actions"><button class="btn btn-ghost" id="skipQuestion">Skip question</button><button class="btn btn-primary" id="submitAnswer">Save answer ✦</button></div>
+        <div class="q-actions"><button class="btn btn-ghost" id="skipQuestion">Lewati dulu</button><button class="btn btn-primary" id="submitAnswer">Simpan jawaban ✦</button></div>
       </div>
       <div id="answerStatus"></div>
     </div>
   </section>
 
   <section class="page" id="message">
-    <div class="eyebrow">leave a message</div><h1>Say something.</h1><p class="lead">Kalau ada sesuatu yang ingin ditinggalkan di sini, tulis saja. ✦.</p>
+    <div class="eyebrow">leave a message</div><h1>Say something.</h1><p class="lead">Kalau ada sesuatu yang ingin ditinggalkan di sini, tulis saja. ✦</p>
     <div class="card" style="margin-top:20px">
       <form id="messageForm" class="form-grid">
         <div class="field"><label>Nama</label><input id="messageName" value="Fitriulfa" maxlength="80"></div>
@@ -575,55 +575,71 @@ const CONFIG = {
 };
 
 const QUESTIONS = [
-  {id:"q01", category:"about you", text:"Hal kecil apa yang akhir-akhir ini paling sering bikin kamu senyum?"},
-  {id:"q02", category:"about you", text:"Kalau sedang capek, biasanya kamu paling suka melakukan apa?"},
-  {id:"q03", category:"about you", text:"Apa satu hal sederhana yang selalu berhasil memperbaiki harimu?"},
-  {id:"q04", category:"about you", text:"Kamu lebih suka suasana ramai atau momen tenang berdua dengan orang terdekat?"},
-  {id:"q05", category:"about you", text:"Kalau punya satu hari bebas tanpa kewajiban, kamu ingin menghabiskannya bagaimana?"},
-  {id:"q06", category:"about you", text:"Apa kebiasaan kecilmu yang paling kamu suka dari dirimu sendiri?"},
-  {id:"q07", category:"about you", text:"Apa hal yang belakangan ini sedang ingin kamu coba?"},
-  {id:"q08", category:"about you", text:"Kalau suasana hatimu hari ini jadi sebuah warna, warnanya apa?"},
-  {id:"q09", category:"about you", text:"Tempat seperti apa yang selalu membuatmu merasa nyaman?"},
-  {id:"q10", category:"about you", text:"Apa satu hal yang ingin kamu capai sebelum tahun ini selesai?"},
+  {id:"q01", category:"pelan-pelan", text:"Kalau hari ini ada seseorang yang ingin benar-benar tahu kabarmu, kamu ingin dia bertanya apa?"},
+  {id:"q02", category:"little things", text:"Hal kecil apa yang paling gampang bikin kamu tersenyum tanpa sadar?"},
+  {id:"q03", category:"sedikit jujur", text:"Kalau ada orang yang selalu ingat detail kecil tentang kamu, menurutmu itu sweet atau malah bikin curiga?"},
+  {id:"q04", category:"tentang kamu", text:"Kamu lebih mudah jatuh nyaman karena perhatian kecil atau karena obrolan yang nyambung?"},
+  {id:"q05", category:"iseng", text:"Kalau seseorang tiba-tiba bilang, 'aku suka cara kamu cerita', kamu bakal senyum atau pura-pura biasa saja?"},
+  {id:"q06", category:"little things", text:"Perhatian seperti apa yang kelihatannya sederhana tapi diam-diam paling kamu ingat?"},
+  {id:"q07", category:"sedikit menjebak", text:"Kalau ada seseorang yang selalu jadi orang pertama yang ingin kamu ceritain sesuatu, menurutmu itu kebetulan?"},
+  {id:"q08", category:"about you", text:"Kamu lebih suka seseorang yang bilang kangen atau seseorang yang diam-diam mencari alasan untuk ngobrol?"},
+  {id:"q09", category:"jujur sedikit", text:"Pernah tidak kamu menunggu chat seseorang sambil pura-pura tidak menunggu?"},
+  {id:"q10", category:"random", text:"Kalau seseorang mengingat makanan favoritmu tanpa pernah kamu minta, kamu akan menganggapnya biasa saja atau spesial?"},
 
-  {id:"q11", category:"little things", text:"Makanan apa yang hampir selalu berhasil membuatmu senang?"},
-  {id:"q12", category:"little things", text:"Lebih suka jalan tanpa rencana atau semuanya sudah disiapkan?"},
-  {id:"q13", category:"little things", text:"Kalau bisa memilih satu lagu untuk menemani perjalanan malam, kamu pilih apa?"},
-  {id:"q14", category:"little things", text:"Hal random apa yang bisa membuatmu tertawa lama?"},
-  {id:"q15", category:"little things", text:"Apa benda kecil yang selalu kamu bawa atau susah kamu tinggalkan?"},
-  {id:"q16", category:"little things", text:"Kalau sedang ingin sendiri, biasanya kamu pergi ke mana atau melakukan apa?"},
-  {id:"q17", category:"little things", text:"Lebih suka foto candid atau foto yang sudah disiapkan dulu?"},
-  {id:"q18", category:"little things", text:"Kalau mendapat hadiah kecil tanpa alasan, kamu paling suka diberi apa?"},
-  {id:"q19", category:"little things", text:"Apa jenis percakapan yang bisa membuatmu lupa waktu?"},
-  {id:"q20", category:"little things", text:"Momen sederhana apa yang menurutmu justru paling enak dikenang?"},
+  {id:"q11", category:"friendship", text:"Menurutmu, kapan sebuah pertemanan mulai terasa lebih dekat daripada sekadar teman biasa?"},
+  {id:"q12", category:"friendship", text:"Apa yang bikin kamu merasa aman untuk cerita hal yang tidak kamu ceritakan ke banyak orang?"},
+  {id:"q13", category:"sedikit menjebak", text:"Kalau harus memilih satu orang untuk kamu hubungi saat sedang punya kabar paling membahagiakan, siapa yang terlintas duluan?"},
+  {id:"q14", category:"friendship", text:"Lebih berarti seseorang yang selalu ada, atau seseorang yang mungkin jarang muncul tapi selalu tahu kapan kamu butuh ditemani?"},
+  {id:"q15", category:"little things", text:"Kalau temanmu tiba-tiba mengirim foto sesuatu karena katanya 'ini mengingatkanku sama kamu', kamu bakal senang tidak?"},
+  {id:"q16", category:"jujur", text:"Apa tanda paling kecil yang membuatmu tahu bahwa seseorang benar-benar memperhatikanmu?"},
+  {id:"q17", category:"friendship", text:"Menurutmu, lebih manis sering ngobrol setiap hari atau punya satu percakapan yang benar-benar berkesan?"},
+  {id:"q18", category:"menjebak halus", text:"Kalau seseorang tahu kamu sedang bad mood hanya dari cara kamu mengetik, menurutmu dia terlalu perhatian atau justru perhatian yang pas?"},
+  {id:"q19", category:"friendship", text:"Apa satu hal yang paling kamu hargai dari seseorang yang tetap tinggal di hidupmu?"},
+  {id:"q20", category:"little things", text:"Kalau ada satu orang yang selalu berhasil membuat hari biasa terasa sedikit lebih menyenangkan, kamu akan bilang terima kasih atau malah malu?"},
 
-  {id:"q21", category:"friendship", text:"Menurutmu, apa yang membuat sebuah pertemanan terasa benar-benar nyaman?"},
-  {id:"q22", category:"friendship", text:"Kamu lebih suka teman yang banyak cerita atau yang lebih banyak mendengarkan?"},
-  {id:"q23", category:"friendship", text:"Apa hal kecil dari seorang teman yang paling mudah kamu hargai?"},
-  {id:"q24", category:"friendship", text:"Kalau sedang punya cerita penting, kamu biasanya langsung cerita atau menunggu waktu yang pas?"},
-  {id:"q25", category:"friendship", text:"Menurutmu, teman yang baik itu seperti apa?"},
-  {id:"q26", category:"friendship", text:"Apa kenangan pertemanan yang sampai sekarang masih sering kamu ingat?"},
-  {id:"q27", category:"friendship", text:"Lebih suka sering bertemu atau cukup sesekali tapi selalu terasa dekat?"},
-  {id:"q28", category:"friendship", text:"Apa satu hal yang menurutmu tidak boleh hilang dari sebuah pertemanan?"},
-  {id:"q29", category:"friendship", text:"Kalau temanmu sedang sedih, biasanya kamu memilih menemani atau memberi ruang?"},
-  {id:"q30", category:"friendship", text:"Apa arti menjadi seseorang yang bisa kamu percaya?"},
+  {id:"q21", category:"memories", text:"Kalau bisa mengulang satu obrolan yang pernah membuatmu bahagia, obrolan yang mana?"},
+  {id:"q22", category:"memory", text:"Ada tidak satu foto yang kalau dilihat lagi langsung membuatmu ingat suasananya?"},
+  {id:"q23", category:"sedikit manis", text:"Kalau suatu hari seseorang berkata, 'aku masih ingat waktu itu kamu bilang...', kamu bakal merasa diperhatikan?"},
+  {id:"q24", category:"memories", text:"Apa kenangan kecil yang sebenarnya biasa saja, tapi entah kenapa masih kamu simpan sampai sekarang?"},
+  {id:"q25", category:"menjebak", text:"Kalau ada satu hari yang ingin kamu ulang bukan karena tempatnya, tapi karena orangnya, apa yang membuat hari itu spesial?"},
+  {id:"q26", category:"memory", text:"Lebih mudah mengingat wajah, suara, atau cara seseorang membuatmu merasa nyaman?"},
+  {id:"q27", category:"jujur sedikit", text:"Pernah tidak kamu melihat kembali chat lama hanya karena sedang kangen suasananya?"},
+  {id:"q28", category:"memory", text:"Kalau satu momen bisa kamu simpan dalam botol kecil untuk dibuka lagi nanti, momen apa yang kamu pilih?"},
+  {id:"q29", category:"sedikit menjebak", text:"Kalau sebuah foto membuatmu tersenyum setiap kali melihatnya, apakah itu berarti fotonya bagus atau kenangannya yang terlalu bagus?"},
+  {id:"q30", category:"memories", text:"Apa satu kalimat dari seseorang yang sampai sekarang masih kamu ingat?"},
 
-  {id:"q31", category:"memories", text:"Kalau bisa mengulang satu hari yang pernah kamu jalani, hari apa yang kamu pilih?"},
-  {id:"q32", category:"memories", text:"Foto seperti apa yang paling kamu suka simpan?"},
-  {id:"q33", category:"memories", text:"Apa satu momen yang kelihatannya biasa, tapi ternyata sangat berarti?"},
-  {id:"q34", category:"memories", text:"Kalau suatu hari melihat kembali foto-foto lama, kamu ingin mengingat apa?"},
-  {id:"q35", category:"memories", text:"Apa tempat yang punya kenangan khusus buatmu?"},
-  {id:"q36", category:"memories", text:"Kalau satu kenangan bisa diputar kembali selama lima menit, kamu memilih yang mana?"},
+  {id:"q31", category:"what if", text:"Kalau besok seseorang mengajakmu pergi tanpa memberi tahu tujuannya, kamu ikut atau harus tahu dulu?"},
+  {id:"q32", category:"what if", text:"Kalau bisa memilih satu suasana untuk menghabiskan waktu bersama seseorang: hujan, sunset, atau malam yang tenang?"},
+  {id:"q33", category:"menjebak", text:"Kalau ada seseorang yang selalu membuatmu tertawa bahkan saat sedang tidak ingin tertawa, kamu akan menganggap dia penting?"},
+  {id:"q34", category:"what if", text:"Kalau seseorang mengajak makan makanan favoritmu tanpa bertanya karena dia sudah tahu, kamu bakal protes atau diam-diam senang?"},
+  {id:"q35", category:"iseng", text:"Kalau harus memilih: dikirimi lagu yang katanya mengingatkan dia padamu, atau foto random yang katanya harus kamu lihat, pilih mana?"},
+  {id:"q36", category:"sedikit jujur", text:"Kalau seseorang tiba-tiba hilang sehari dari chat, siapa yang paling mungkin kamu cari duluan?"},
+  {id:"q37", category:"what if", text:"Kalau punya satu hari kosong bersama seseorang tanpa perlu pergi jauh, kamu ingin melakukan apa?"},
+  {id:"q38", category:"menjebak halus", text:"Kalau seseorang hafal pesananmu, kebiasaanmu, dan mood-mu, masih bisa dibilang cuma kebetulan?"},
+  {id:"q39", category:"random", text:"Kalau kamu boleh meminta satu hal kecil dari seseorang yang kamu sayang sebagai teman, apa yang kamu minta?"},
+  {id:"q40", category:"what if", text:"Kalau ada seseorang yang selalu menjadi tempat pulang untuk cerita-cerita kecilmu, apa panggilan yang cocok untuk orang itu?"},
 
-  {id:"q37", category:"just for fun", text:"Kalau besok tiba-tiba libur, kamu mau pergi ke mana?"},
-  {id:"q38", category:"just for fun", text:"Kalau hidupmu punya soundtrack minggu ini, lagu apa yang cocok?"},
-  {id:"q39", category:"just for fun", text:"Kalau bisa makan satu makanan sepuasnya hari ini, kamu pilih apa?"},
-  {id:"q40", category:"just for fun", text:"Kalau harus memilih: sunset, hujan, atau malam yang tenang?"},
-  {id:"q41", category:"just for fun", text:"Kalau bisa punya satu kemampuan baru secara instan, kamu pilih apa?"},
-  {id:"q42", category:"just for fun", text:"Kalau kita tiba-tiba punya waktu kosong seharian, menurutmu enaknya ngapain?"},
-  {id:"q43", category:"just for fun", text:"Tiga kata yang paling menggambarkan dirimu belakangan ini apa?"},
-  {id:"q44", category:"just for fun", text:"Hal paling random apa yang pernah membuatmu bahagia?"},
-  {id:"q45", category:"just for fun", text:"Kalau bisa menyimpan satu suasana hari ini selamanya, kamu ingin menyimpan yang mana?"}
+  {id:"q41", category:"lebih jujur", text:"Apa yang membuat seseorang pelan-pelan masuk ke daftar orang yang kamu prioritaskan?"},
+  {id:"q42", category:"menjebak sedikit", text:"Kalau kamu harus menyebut satu orang yang paling sering muncul di pikiranmu akhir-akhir ini, siapa yang pertama muncul?"},
+  {id:"q43", category:"jujur", text:"Pernah tidak kamu sengaja memperpanjang obrolan karena sebenarnya belum ingin percakapannya selesai?"},
+  {id:"q44", category:"sedikit manis", text:"Menurutmu, mana yang lebih terasa: seseorang yang bilang 'jaga diri' atau seseorang yang benar-benar memastikan kamu baik-baik saja?"},
+  {id:"q45", category:"menjebak", text:"Kalau ada seseorang yang membuatmu merasa menjadi diri sendiri tanpa perlu menjaga image, seberapa berartinya dia buatmu?"},
+  {id:"q46", category:"jujur", text:"Apa hal yang paling cepat membuatmu merasa dekat dengan seseorang?"},
+  {id:"q47", category:"little things", text:"Kalau seseorang mengingat ulang tahun, makanan favorit, dan cerita kecilmu, bagian mana yang paling bikin kamu tersentuh?"},
+  {id:"q48", category:"menjebak halus", text:"Kalau kamu harus memilih: seseorang yang selalu membuatmu nyaman atau seseorang yang selalu membuatmu penasaran?"},
+  {id:"q49", category:"jujur sedikit", text:"Apa bedanya orang yang kamu suka ngobrol dengan orang yang benar-benar kamu cari saat sedang butuh seseorang?"},
+  {id:"q50", category:"sedikit manis", text:"Kalau ada seseorang yang membaca semua jawabanmu sampai sejauh ini, menurutmu dia cukup mengenalmu belum?"},
+
+  {id:"q51", category:"final round", text:"Kalau seseorang bertanya, 'aku termasuk orang yang berarti buat kamu tidak?', jawaban paling jujurmu apa?"},
+  {id:"q52", category:"final round", text:"Kalau harus menyimpan satu kebiasaan kecil dari seseorang karena takut suatu hari merindukannya, kebiasaan apa?"},
+  {id:"q53", category:"final round", text:"Pernah tidak kamu sadar seseorang spesial justru dari hal yang sangat sederhana?"},
+  {id:"q54", category:"final round", text:"Kalau seseorang selalu berhasil membuatmu tersenyum di hari yang buruk, menurutmu dia tahu tidak seberapa besar pengaruhnya?"},
+  {id:"q55", category:"final round", text:"Kalau bisa mengirim satu pesan ke seseorang tanpa takut salah dipahami, apa yang ingin kamu bilang?"},
+  {id:"q56", category:"final round", text:"Menurutmu, seseorang bisa menjadi sangat berarti tanpa pernah ada status apa-apa di antara kalian?"},
+  {id:"q57", category:"final round", text:"Kalau kamu harus memilih satu orang untuk diajak membuat kenangan baru tahun ini, siapa yang ingin kamu ajak?"},
+  {id:"q58", category:"final round", text:"Kalau seseorang bilang, 'aku senang kamu ada', apa yang paling ingin kamu balas?"},
+  {id:"q59", category:"final round", text:"Apa satu hal tentang dirimu yang diam-diam ingin kamu pahami oleh seseorang tanpa perlu kamu jelaskan panjang lebar?"},
+  {id:"q60", category:"last one", text:"Pertanyaan terakhir: kalau halaman ini suatu hari dibuka lagi, kamu ingin orang yang membacanya mengingat apa tentang kamu?"}
 ];
 
 let currentQuestion = Number(localStorage.getItem("fitriulfa_question_index") || 0);
@@ -688,7 +704,7 @@ document.getElementById("skipQuestion").onclick=()=>{
 document.getElementById("submitAnswer").onclick=async()=>{
   const q=QUESTIONS[currentQuestion], answer=document.getElementById("answerText").value.trim();
   if(!answer){toast("Isi jawaban dulu ya.",false);return}
-  const btn=document.getElementById("submitAnswer"); btn.disabled=true; btn.textContent="Saving...";
+  const btn=document.getElementById("submitAnswer"); btn.disabled=true; btn.textContent="Menyimpan...";
   try{
     await apiPost("saveAnswer",{questionId:q.id,question:q.text,category:q.category,answer});
     toast("Jawaban berhasil tersimpan ✦");
@@ -696,7 +712,7 @@ document.getElementById("submitAnswer").onclick=async()=>{
     setTimeout(advanceQuestion,500);
     loadDashboard();
   }catch(e){toast(e.message,false)}
-  finally{btn.disabled=false;btn.textContent="Save answer ✦"}
+  finally{btn.disabled=false;btn.textContent="Simpan jawaban ✦"}
 };
 
 document.getElementById("messageForm").addEventListener("submit",async e=>{
@@ -722,7 +738,7 @@ document.querySelectorAll(".mood").forEach(b=>b.onclick=()=>{
 });
 document.getElementById("saveMood").onclick=async()=>{
   if(!selectedMood){toast("Pilih mood dulu.",false);return}
-  const btn=document.getElementById("saveMood");btn.disabled=true;btn.textContent="Saving...";
+  const btn=document.getElementById("saveMood");btn.disabled=true;btn.textContent="Menyimpan...";
   try{
     await apiPost("saveMood",{mood:selectedMood,note:document.getElementById("moodNote").value.trim()});
     toast("Mood berhasil disimpan ✦");loadDashboard();
