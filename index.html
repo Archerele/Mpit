@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6f5aa8">
+<title>Fitriulfa — Little Corner ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f2; --surface:#fff; --surface2:#f1eee9; --ink:#20202a; --muted:#777583;
+  --line:#e6e1da; --purple:#7562a8; --purple2:#a596cf; --rose:#d98d9d; --gold:#c8a56a;
+  --shadow:0 18px 55px rgba(48,40,62,.09); --r:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:radial-gradient(circle at 10% 0%,#eee9f7 0,transparent 30%),radial-gradient(circle at 100% 10%,#f6e9ed 0,transparent 28%),var(--bg);color:var(--ink);min-height:100vh}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh;max-width:1500px;margin:auto}
+.sidebar{position:sticky;top:0;height:100vh;padding:28px 18px;border-right:1px solid var(--line);background:rgba(255,255,255,.72);backdrop-filter:blur(18px);z-index:20}
+.brand{padding:8px 12px 28px}
+.brand .dot{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--rose));display:grid;place-items:center;color:white;font-size:18px;box-shadow:0 8px 25px rgba(117,98,168,.25);margin-bottom:13px}
+.brand h2{font:600 22px "Playfair Display",serif;letter-spacing:-.3px}
+.brand p{font-size:11px;color:var(--muted);margin-top:4px}
+.nav-title{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#aaa4ad;font-weight:700;padding:8px 12px}
+.nav button{border:0;background:transparent;width:100%;display:flex;align-items:center;gap:12px;text-align:left;padding:12px;border-radius:14px;color:#64616b;font-weight:600;font-size:13px;margin:2px 0;transition:.2s}
+.nav button:hover,.nav button.active{background:#eeeaf7;color:var(--purple)}
+.nav .ico{width:22px;text-align:center;font-size:16px}
+.side-note{position:absolute;left:18px;right:18px;bottom:24px;padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.75);font-size:11px;color:var(--muted);line-height:1.5}
+.side-note b{color:var(--ink)}
+.main{min-width:0;padding:25px 34px 50px}
+.topbar{height:52px;display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.search{width:min(380px,55%);height:42px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;padding:0 13px;gap:9px}
+.search span{color:#aaa}
+.search input{border:0;outline:0;background:transparent;width:100%;font-size:12px;color:var(--ink)}
+.actions{display:flex;gap:8px}
+.iconbtn{width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:13px;color:#666;transition:.2s}
+.iconbtn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.music-on{background:#eeeaf7;color:var(--purple)!important}
+.page{display:none;animation:up .35s ease}
+.page.active{display:block}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:7px}
+h1{font:600 clamp(30px,4vw,48px)/1.05 "Playfair Display",serif;letter-spacing:-1px}
+h2{font:600 26px "Playfair Display",serif}
+h3{font-size:15px}
+.lead{color:var(--muted);font-size:13px;line-height:1.7;margin-top:10px}
+.hero{position:relative;min-height:390px;border-radius:32px;overflow:hidden;background:#2f2938;margin-bottom:18px;box-shadow:var(--shadow)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,22,31,.88) 0%,rgba(34,27,39,.5) 47%,rgba(34,27,39,.08) 100%)}
+.hero-content{position:relative;z-index:2;max-width:650px;color:white;padding:62px 55px}
+.hero-content .eyebrow{color:#e4d7ff}
+.hero-content h1{font-size:clamp(38px,5vw,64px)}
+.hero-content .lead{color:rgba(255,255,255,.78);max-width:560px}
+.signature{font:500 16px "Playfair Display",serif;color:#f4dfe4;margin-top:22px}
+.grid{display:grid;gap:16px}
+.stats{grid-template-columns:repeat(4,1fr);margin:18px 0}
+.card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:0 7px 30px rgba(50,42,65,.04)}
+.stat{min-height:112px}
+.stat .small{font-size:11px;color:var(--muted);margin-bottom:8px}
+.stat strong{font-size:27px;letter-spacing:-1px}
+.stat .hint{font-size:10px;color:#a49eaa;margin-top:5px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:30px 0 13px}
+.section-head p{font-size:11px;color:var(--muted)}
+.btn{border:0;border-radius:12px;padding:11px 15px;font-size:12px;font-weight:700;transition:.2s}
+.btn-primary{background:var(--purple);color:white;box-shadow:0 8px 20px rgba(117,98,168,.2)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-soft{background:#eeeaf7;color:var(--purple)}
+.btn-ghost{background:white;border:1px solid var(--line);color:#666}
+.photo-grid{grid-template-columns:repeat(4,1fr)}
+.photo{padding:0;overflow:hidden;position:relative;min-height:230px}
+.photo img{width:100%;height:250px;object-fit:cover;display:block;transition:.5s}
+.photo:hover img{transform:scale(1.035)}
+.photo .caption{padding:13px 15px}
+.caption b{font-size:12px}.caption span{display:block;font-size:10px;color:var(--muted);margin-top:3px}
+.video-grid{grid-template-columns:repeat(2,1fr)}
+.video-card{padding:0;overflow:hidden}
+.video-card video{width:100%;height:300px;display:block;object-fit:cover;background:#1e1b22}
+.video-card .caption{padding:13px 15px 16px}
+.memory-grid{grid-template-columns:repeat(2,1fr)}
+.memory{display:grid;grid-template-columns:150px 1fr;gap:17px;align-items:center}
+.memory img{width:150px;height:125px;object-fit:cover;border-radius:17px}
+.memory .date{font-size:10px;color:var(--purple);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.memory h3{margin:6px 0;font-family:"Playfair Display",serif;font-size:19px}
+.memory p{font-size:11px;color:var(--muted);line-height:1.6}
+.timeline{position:relative;padding-left:22px}
+.timeline:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.titem{position:relative;padding:0 0 20px}
+.titem:before{content:"";position:absolute;left:-20px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--purple);box-shadow:0 0 0 5px #eeeaf7}
+.titem time{font-size:10px;color:var(--purple);font-weight:700}.titem h3{margin:4px 0}.titem p{font-size:11px;color:var(--muted);line-height:1.6}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+.field label{font-size:11px;font-weight:700;color:#67636c}
+.field input,.field textarea,.field select{border:1px solid var(--line);background:#fcfbfa;border-radius:13px;padding:12px 13px;outline:none;color:var(--ink);font-size:12px}
+.field textarea{min-height:145px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#b9acd8;box-shadow:0 0 0 3px #eeeaf7}
+.question{background:linear-gradient(135deg,#f0ecfa,#fff7f5);border:1px solid #e3dbf1;border-radius:25px;padding:27px;margin-bottom:15px}
+.question .qnum{font-size:10px;color:var(--purple);font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
+.question h2{margin-top:9px;max-width:800px;font-size:28px;line-height:1.25}
+.question textarea{margin-top:18px;width:100%;min-height:125px;background:rgba(255,255,255,.8);border:1px solid #e1d9ed;border-radius:15px;padding:14px;outline:0;resize:vertical}
+.q-actions{display:flex;justify-content:space-between;align-items:center;margin-top:13px;gap:10px}
+.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mood{border:1px solid var(--line);background:#fff;border-radius:17px;padding:17px 8px;text-align:center;transition:.2s}
+.mood:hover,.mood.selected{border-color:#b9acd8;background:#f1edf9;transform:translateY(-2px)}
+.mood .emoji{font-size:25px;display:block;margin-bottom:6px}.mood span:last-child{font-size:10px;color:#666}
+.toast{position:fixed;right:24px;bottom:24px;background:#24222b;color:#fff;padding:13px 17px;border-radius:14px;font-size:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s;z-index:100}
+.toast.show{opacity:1;transform:none}
+.loading{opacity:.55;pointer-events:none}
+.empty{padding:35px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed var(--line);border-radius:18px;background:rgba(255,255,255,.45)}
+.result-list{display:grid;gap:9px;margin-top:15px}.result{padding:12px;border:1px solid var(--line);border-radius:13px;background:#fff}.result b{font-size:11px}.result p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+
+.camera-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:20px}
+.camera-card{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:0 7px 30px rgba(50,42,65,.04)}
+.camera-preview{width:100%;aspect-ratio:4/3;background:#201d25;border-radius:20px;overflow:hidden;position:relative}
+.camera-preview video{width:100%;height:100%;object-fit:cover;display:block;transform:scaleX(-1)}
+.camera-preview .camera-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#aaa;font-size:12px;text-align:center;padding:30px}
+.camera-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.camera-actions .btn{flex:1;min-width:130px}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.shot{position:relative;background:#f1eee9;border-radius:16px;overflow:hidden;aspect-ratio:1/1;display:grid;place-items:center}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot .label{position:absolute;left:8px;bottom:8px;background:rgba(31,29,37,.78);color:white;padding:5px 8px;border-radius:9px;font-size:9px}
+.shot.empty-shot{border:1px dashed #d4cec5;background:#faf9f7;color:#aaa;font-size:11px;text-align:center;padding:15px}
+.date-preview{background:linear-gradient(145deg,#f4eefb,#fff4f5);border:1px solid #e3dbef;border-radius:22px;padding:14px}
+.date-canvas-wrap{width:100%;aspect-ratio:4/3;border-radius:17px;overflow:hidden;background:#e8e4de}
+#dateCanvas{width:100%;height:100%;display:block;object-fit:contain}
+.date-caption{font:600 16px "Playfair Display",serif;margin-top:11px}
+.date-caption small{display:block;font:400 10px "DM Sans",sans-serif;color:var(--muted);margin-top:4px}
+.camera-status{font-size:11px;color:var(--muted);line-height:1.55;margin-top:10px}
+@media(max-width:900px){.camera-layout{grid-template-columns:1fr}}
+@media(max-width:760px){.shots{grid-template-columns:1fr 1fr}.camera-actions .btn{min-width:110px}}
+
+
+/* ===== Romantic refinement ===== */
+:root{--romantic:#b87591;--romantic-soft:#f6e9ef;--romantic-deep:#6f5266}
+.romantic-line{font:500 18px/1.5 "Playfair Display",serif;color:#f5dfe7;margin-top:13px;max-width:520px}
+.quote-card{background:linear-gradient(135deg,#fff,#fbf1f5);border:1px solid #ead9df}
+.quote-card .quote{font:600 23px/1.45 "Playfair Display",serif;color:#4d3945}
+.quote-card .from{font-size:10px;color:#9b818c;margin-top:10px;letter-spacing:.5px}
+.special-grid{grid-template-columns:repeat(3,1fr)}
+.special-card{position:relative;overflow:hidden;min-height:180px}
+.special-card:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-65px;top:-65px;background:rgba(184,117,145,.10)}
+.special-card .mini{font-size:10px;color:var(--romantic);text-transform:uppercase;letter-spacing:1.3px;font-weight:700}
+.special-card h3{font:600 20px "Playfair Display",serif;margin:8px 0}
+.special-card p{font-size:11px;line-height:1.65;color:var(--muted);max-width:290px}
+.heart-divider{text-align:center;color:#c08a9f;font-size:13px;margin:20px 0;letter-spacing:7px}
+.activity-layout{display:grid;grid-template-columns:1fr .85fr;gap:16px;margin-top:20px}
+.activity-list{display:grid;gap:10px;margin-top:15px}
+.activity-item{display:grid;grid-template-columns:78px 1fr auto;gap:13px;align-items:center}
+.activity-date{font:600 13px "Playfair Display",serif;color:var(--romantic)}
+.activity-time{font-size:9px;color:#aaa;margin-top:3px}
+.activity-item h4{font-size:12px}.activity-item p{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.45}
+.activity-thumb{width:62px;height:62px;border-radius:13px;object-fit:cover;background:#eee}
+.upload-box{border:1px dashed #d9c9d0;border-radius:17px;background:#fcf8fa;padding:14px}
+.upload-preview{width:100%;aspect-ratio:4/3;border-radius:15px;object-fit:cover;background:#eee9e5;display:none}
+.file-label{display:flex;align-items:center;justify-content:center;min-height:100px;border-radius:15px;background:#f6eff2;color:#8a6d7a;font-size:11px;text-align:center;padding:15px;cursor:pointer}
+.file-label:hover{background:#f1e7eb}.file-label input{display:none}
+@media(max-width:900px){.special-grid{grid-template-columns:1fr}.activity-layout{grid-template-columns:1fr}}
+
+
+.sync-layout{display:grid;grid-template-columns:1fr .82fr;gap:16px;margin-top:20px}
+.sync-card{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:27px;padding:20px;box-shadow:0 7px 30px rgba(50,42,65,.04)}
+.room-code{font:700 34px "DM Sans",sans-serif;letter-spacing:7px;color:var(--purple);background:#f0ecfa;border-radius:18px;padding:14px 18px;text-align:center;margin:12px 0}
+.room-actions{display:flex;gap:8px;flex-wrap:wrap}.room-actions .btn{flex:1;min-width:145px}
+#qrBox{display:flex;justify-content:center;align-items:center;min-height:170px;margin:15px 0}
+#qrBox canvas,#qrBox img{border-radius:10px}
+.peer-status{display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:14px;background:#f8f6f3;font-size:11px;color:var(--muted);margin-top:12px}
+.status-dot{width:9px;height:9px;border-radius:50%;background:#c7c2bd}.status-dot.ok{background:#7aaa8b;box-shadow:0 0 0 5px #e8f2eb}
+.sync-preview{width:100%;aspect-ratio:4/3;background:#201d25;border-radius:19px;overflow:hidden;position:relative}
+.sync-preview video{width:100%;height:100%;object-fit:cover;display:block;transform:scaleX(-1)}
+.sync-preview .preview-copy{position:absolute;left:15px;right:15px;bottom:15px;padding:11px 13px;border-radius:14px;background:rgba(20,18,23,.63);color:white;font-size:11px;backdrop-filter:blur(10px)}
+.countdown{position:absolute;inset:0;display:grid;place-items:center;color:white;font:600 110px "Playfair Display",serif;text-shadow:0 8px 35px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.15s}
+.countdown.show{opacity:1}
+.partner-photo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.partner-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:15px;background:#eee}
+.sync-help{font-size:11px;color:var(--muted);line-height:1.65;margin-top:12px}
+@media(max-width:900px){.sync-layout{grid-template-columns:1fr}}
+
+.footer-note{text-align:center;color:#aaa4ad;font-size:10px;margin-top:35px}
+.mobile-nav{display:none}
+@media(max-width:1050px){
+ .app{grid-template-columns:210px 1fr}.main{padding:22px}.photo-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+ .app{display:block}.sidebar{display:none}.main{padding:16px 14px 85px}.topbar{margin-bottom:15px}.search{width:100%;max-width:none}.actions{display:none}
+ .hero{min-height:430px}.hero-content{padding:45px 25px}.hero:after{background:linear-gradient(0deg,rgba(26,22,31,.92),rgba(34,27,39,.12))}
+ .stats,.photo-grid,.memory-grid,.video-grid,.moods{grid-template-columns:1fr 1fr}.photo img{height:210px}.memory{grid-template-columns:1fr}.memory img{width:100%;height:200px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+ .mobile-nav{position:fixed;display:flex;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.93);border:1px solid var(--line);backdrop-filter:blur(18px);border-radius:20px;padding:7px;z-index:50;box-shadow:0 12px 35px rgba(40,35,50,.13)}
+ .mobile-nav button{flex:1;border:0;background:transparent;border-radius:13px;padding:9px 3px;font-size:9px;color:#777}.mobile-nav button.active{background:#eeeaf7;color:var(--purple);font-weight:700}
+ .mobile-nav span{display:block;font-size:16px;margin-bottom:2px}
+}
+.dual-live{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative;background:#15131b;padding:8px}.live-pane{position:relative;min-width:0;aspect-ratio:4/3;overflow:hidden;border-radius:16px;background:#25212c}.live-pane video{width:100%;height:100%;object-fit:cover;display:block}.live-pane>span{position:absolute;left:10px;bottom:10px;padding:5px 8px;border-radius:999px;background:rgba(20,18,25,.62);color:#fff;font-size:11px;z-index:2}.remote-wait{position:absolute;inset:0;display:grid;place-items:center;color:#fff8;font-size:12px;text-align:center;padding:20px}.dual-live .preview-copy{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:4;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.88);font-size:11px;white-space:nowrap}@media(max-width:700px){.dual-live{gap:5px;padding:5px}.live-pane>span{font-size:10px;left:7px;bottom:7px}}
+</style>
+
+<style>
+.camera-effects{margin-top:14px;padding:12px 14px;border:1px solid rgba(117,98,168,.14);border-radius:18px;background:rgba(255,255,255,.72)}
+.effect-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.effect-chip{border:1px solid rgba(117,98,168,.16);background:#fff;border-radius:999px;padding:8px 12px;font:600 12px/1 inherit;color:#554c61;cursor:pointer;transition:.2s}
+.effect-chip:hover{transform:translateY(-1px)}
+.effect-chip.active{background:#7562a8;color:#fff;border-color:#7562a8;box-shadow:0 6px 18px rgba(117,98,168,.18)}
+.sync-preview{position:relative;overflow:hidden}
+.sync-overlay{position:absolute;inset:0;pointer-events:none;z-index:4;overflow:hidden;border-radius:inherit}
+.sync-overlay:before,.sync-overlay:after{content:"";position:absolute;inset:0;pointer-events:none}
+.sync-preview.effect-dreamy video{filter:saturate(1.06) contrast(.96) brightness(1.04)}
+.sync-preview.effect-soft video{filter:saturate(.9) contrast(.92) brightness(1.08) blur(.15px)}
+.sync-preview.effect-film video{filter:saturate(.9) contrast(1.08) sepia(.08)}
+.sync-preview.effect-hearts video{filter:saturate(1.04) brightness(1.02)}
+.sync-preview.effect-dreamy .sync-overlay{background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.12),transparent 48%),linear-gradient(135deg,rgba(255,210,229,.12),rgba(181,160,235,.10))}
+.sync-preview.effect-soft .sync-overlay{background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.2),transparent 62%)}
+.sync-preview.effect-film .sync-overlay{background:linear-gradient(rgba(255,236,214,.07),rgba(92,65,92,.06))}
+.sync-preview.effect-film .sync-overlay:after{background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:5px 5px;opacity:.22}
+.sync-preview.effect-hearts .sync-overlay:before{content:"♡   ✦   ♡      ✧   ♡   ✦      ♡   ✧   ♡";position:absolute;inset:8% 2%;font-size:24px;line-height:2.7;color:rgba(255,255,255,.72);text-shadow:0 2px 14px rgba(173,88,130,.3);letter-spacing:10px;animation:floatHearts 5s ease-in-out infinite}
+.sync-preview.effect-hearts .sync-overlay:after{content:"✦     ♡       ✦     ♡";position:absolute;inset:auto 5% 8%;font-size:18px;color:rgba(255,220,239,.82);animation:floatHearts2 4s ease-in-out infinite}
+@keyframes floatHearts{0%,100%{transform:translateY(8px) rotate(-2deg);opacity:.55}50%{transform:translateY(-12px) rotate(2deg);opacity:.9}}
+@keyframes floatHearts2{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(-10px);opacity:.9}}
+@media(max-width:700px){.effect-row{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}.effect-chip{white-space:nowrap}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="dot">✦</div>
+    <h2>Fitriulfa</h2>
+    <p>little corner • just good memories</p>
+  </div>
+  <div class="nav-title">Explore</div>
+  <nav class="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span> Beranda</button>
+    <button data-page="photos"><span class="ico">◫</span> 8 Foto</button>
+    <button data-page="memories"><span class="ico">♡</span> 2 Memories</button>
+    <button data-page="videos"><span class="ico">▶</span> 4 Video</button>
+    <button data-page="qa"><span class="ico">?</span> Get to Know</button>
+    <button data-page="message"><span class="ico">✉</span> Leave a Message</button>
+    <button data-page="mood"><span class="ico">☼</span> Mood Check-in</button>
+    <button data-page="camera"><span class="ico">◉</span> Camera & Date</button>
+    <button data-page="syncdate"><span class="ico">⇄</span> 2-Phone Date</button>
+    <button data-page="timeline"><span class="ico">⌁</span> Timeline</button>
+    <button data-page="activities"><span class="ico">✎</span> Daily Story</button>
+  </nav>
+  <div class="side-note"><b>For Fitriulfa.</b><br>Tempat kecil buat nyimpan cerita, jawaban, foto, video, dan hal-hal random yang sayang kalau hilang.</div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="search"><span>⌕</span><input id="searchInput" placeholder="Cari di dashboard..."></div>
+    <div class="actions">
+      <button class="iconbtn" id="musicBtn" title="Music">♫</button>
+      <button class="iconbtn" id="refreshBtn" title="Refresh">↻</button>
+    </div>
+  </div>
+
+  <section class="page active" id="home">
+    <div class="hero">
+      <img src="assets/fitriulfa-01.jpg" alt="Fitriulfa">
+      <div class="hero-content">
+        <div class="eyebrow">A little corner on the internet</div>
+        <h1>Hi, Fitriulfa ✦</h1>
+        <p class="lead">Karena ada orang-orang yang kehadirannya terlalu berharga untuk cuma lewat begitu saja. Jadi, dibuatlah satu sudut kecil untuk menyimpan senyum, cerita, foto, video, dan hari-hari yang pernah terasa lebih indah.</p><div class="romantic-line">“Beberapa orang tidak perlu menjadi apa-apa untuk tetap menjadi seseorang yang sangat berarti.”</div>
+        <div class="signature">for someone who makes ordinary moments feel a little less ordinary. ✦</div>
+      </div>
+    </div>
+    <div class="grid stats">
+      <div class="card stat"><div class="small">Messages</div><strong id="statMessages">—</strong><div class="hint">pesan yang masuk</div></div>
+      <div class="card stat"><div class="small">Questions</div><strong id="statAnswers">—</strong><div class="hint">jawaban tersimpan</div></div>
+      <div class="card stat"><div class="small">Memories</div><strong>2</strong><div class="hint">special little moments</div></div>
+      <div class="card stat"><div class="small">Mood</div><strong id="statMood">—</strong><div class="hint">check-in terakhir</div></div>
+    </div>
+    <div class="section-head"><div><div class="eyebrow">soft archive</div><h2>Little things worth keeping</h2></div><button class="btn btn-soft" onclick="showPage('photos')">See photos →</button></div>
+    <div class="heart-divider">♡ · ♡ · ♡</div>
+    <div class="grid special-grid">
+      <article class="card special-card"><div class="mini">Foto</div><h3>Little pieces of you.</h3><p>Delapan frame kecil untuk menyimpan sisi Fitriulfa yang mungkin terlalu sayang kalau hanya tersimpan di galeri HP.</p></article>
+      <article class="card special-card"><div class="mini">Video</div><h3>Moments that move.</h3><p>Kenangan terasa berbeda ketika bukan hanya dilihat, tetapi juga bisa didengar dan dirasakan lagi.</p></article>
+      <article class="card special-card quote-card"><div class="quote">“Kalau suatu hari lupa detailnya, semoga halaman ini bisa mengingatkan betapa spesialnya hari-hari itu.”</div><div class="from">A LITTLE PLACE FOR FITRIULFA</div></article>
+    </div>
+
+    <div class="grid photo-grid">
+      <article class="card photo"><img src="assets/fitriulfa-01.jpg"><div class="caption"><b>01 — that smile</b><span>one of those photos that just feels warm</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-02.jpg"><div class="caption"><b>02 — candid</b><span>no perfect pose required</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-03.jpg"><div class="caption"><b>03 — good day</b><span>saved for later</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-04.jpg"><div class="caption"><b>04 — favorite frame</b><span>simple, but memorable</span></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="photos">
+    <div class="eyebrow">photo archive</div><h1>Eight reasons to smile.</h1><p class="lead">Delapan frame untuk menyimpan sisi-sisi kecil Fitriulfa — karena terkadang sebuah foto bisa mengembalikan perasaan yang tidak bisa dijelaskan dengan kata-kata.</p>
+    <div class="grid photo-grid" style="margin-top:20px">
+      <article class="card photo"><img src="assets/fitriulfa-01.jpg"><div class="caption"><b>01 — First Frame</b><span>A little moment worth saving.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-02.jpg"><div class="caption"><b>02 — Candid</b><span>Nothing too planned.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-03.jpg"><div class="caption"><b>03 — Soft Light</b><span>Good light, good mood.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-04.jpg"><div class="caption"><b>04 — Favorite</b><span>One for the archive.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-05.jpg"><div class="caption"><b>05 — Random</b><span>Randomly became memorable.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-06.jpg"><div class="caption"><b>06 — Good Energy</b><span>Keep this one.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-07.jpg"><div class="caption"><b>07 — Another Day</b><span>Just because.</span></div></article>
+      <article class="card photo"><img src="assets/fitriulfa-08.jpg"><div class="caption"><b>08 — Last Frame</b><span>Not really the last one.</span></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="memories">
+    <div class="eyebrow">memory lane</div><h1>Two memories, a thousand feelings.</h1><p class="lead">Bukan cuma dua foto. Ini dua potongan kecil dari cerita yang layak disimpan lebih lama.</p>
+    <div class="grid memory-grid" style="margin-top:20px">
+      <article class="card memory"><img src="assets/memory-01.jpg"><div><div class="date">Memory 01</div><h3>The moment I wish I could replay.</h3><p>Isi cerita tentang satu momen yang sampai sekarang masih terasa hangat setiap kali diingat.</p></div></article>
+      <article class="card memory"><img src="assets/memory-02.jpg"><div><div class="date">Memory 02</div><h3>Some days quietly become memories.</h3><p>Satu hari biasa yang entah bagaimana menjadi sesuatu yang ingin disimpan lebih lama.</p></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="videos">
+    <div class="eyebrow">moving memories</div><h1>Four moments that still move.</h1><p class="lead">Ada kenangan yang tidak cukup hanya disimpan sebagai foto. Ada tawa, gerakan, suara, dan suasana yang membuat sebuah momen terasa hidup lagi.</p>
+    <div class="grid video-grid" style="margin-top:20px">
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-01.jpg"><source src="assets/video-01.mp4" type="video/mp4"></video><div class="caption"><b>01 — A moment worth replaying</b><span>Untuk hari-hari ketika satu frame saja terasa belum cukup.</span></div></article>
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-03.jpg"><source src="assets/video-02.mp4" type="video/mp4"></video><div class="caption"><b>02 — Little things, big feelings</b><span>Hal sederhana yang ternyata punya tempat sendiri di ingatan.</span></div></article>
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-05.jpg"><source src="assets/video-03.mp4" type="video/mp4"></video><div class="caption"><b>03 — A little piece of that day</b><span>Supaya suasana hari itu tidak benar-benar hilang.</span></div></article>
+      <article class="card video-card"><video controls preload="metadata" poster="assets/fitriulfa-07.jpg"><source src="assets/video-04.mp4" type="video/mp4"></video><div class="caption"><b>04 — Keep this feeling</b><span>Yang ingin disimpan sebenarnya bukan videonya, tetapi rasanya.</span></div></article>
+    </div>
+  </section>
+
+  <section class="page" id="qa">
+    <div class="eyebrow">get to know fitriulfa</div><h1>Questions, but make them honest.</h1><p class="lead">Jawab yang kamu nyaman jawab. Setiap jawaban dikirim ke Google Spreadsheet melalui Apps Script.</p>
+    <div class="card" style="margin-top:20px">
+      <div class="question">
+        <div class="qnum" id="qNumber">Question</div>
+        <h2 id="questionText">Loading question...</h2>
+        <textarea id="answerText" placeholder="Tulis jawabanmu di sini..."></textarea>
+        <div class="q-actions"><button class="btn btn-ghost" id="skipQuestion">Skip question</button><button class="btn btn-primary" id="submitAnswer">Save answer ✦</button></div>
+      </div>
+      <div id="answerStatus"></div>
+    </div>
+  </section>
+
+  <section class="page" id="message">
+    <div class="eyebrow">leave a message</div><h1>Say something.</h1><p class="lead">Pesan langsung dikirim ke server. Tidak disimpan di browser sebagai database utama.</p>
+    <div class="card" style="margin-top:20px">
+      <form id="messageForm" class="form-grid">
+        <div class="field"><label>Nama</label><input id="messageName" value="Fitriulfa" maxlength="80"></div>
+        <div class="field"><label>Kategori</label><select id="messageCategory"><option>Cerita</option><option>Curhat</option><option>Random</option><option>Pertanyaan</option><option>Saran</option><option>Humor</option><option>Penting</option></select></div>
+        <div class="field full"><label>Pesan</label><textarea id="messageText" required maxlength="5000" placeholder="Tulis apa saja yang ingin kamu sampaikan..."></textarea></div>
+        <div class="field full" style="align-items:flex-start"><button class="btn btn-primary" type="submit">Kirim ke server ✦</button></div>
+      </form>
+    </div>
+    <div class="section-head"><div><div class="eyebrow">latest</div><h2>Recent messages</h2></div></div>
+    <div id="recentMessages" class="result-list"></div>
+  </section>
+
+  <section class="page" id="mood">
+    <div class="eyebrow">daily check-in</div><h1>How are you, really?</h1><p class="lead">Pilih mood dan tambahkan catatan kalau mau. Data disimpan ke sheet <b>Mood</b>.</p>
+    <div class="card" style="margin-top:20px">
+      <div class="moods">
+        <button class="mood" data-mood="Happy"><span class="emoji">☀️</span><span>Happy</span></button>
+        <button class="mood" data-mood="Calm"><span class="emoji">🌿</span><span>Calm</span></button>
+        <button class="mood" data-mood="Excited"><span class="emoji">✨</span><span>Excited</span></button>
+        <button class="mood" data-mood="Tired"><span class="emoji">☁️</span><span>Tired</span></button>
+        <button class="mood" data-mood="Quiet"><span class="emoji">🌙</span><span>Quiet</span></button>
+      </div>
+      <div class="field" style="margin-top:15px"><label>Catatan (opsional)</label><textarea id="moodNote" placeholder="Hari ini rasanya..."></textarea></div>
+      <button class="btn btn-primary" style="margin-top:12px" id="saveMood">Save mood ✦</button>
+    </div>
+  </section>
+
+
+  <section class="page" id="camera">
+    <div class="eyebrow">camera studio</div>
+    <h1>One frame, two people.</h1>
+    <p class="lead">Buat foto berdua dengan gaya date yang manis. Ambil foto User 1 dan User 2 dari kamera, lalu dashboard otomatis menyatukannya berdampingan menjadi satu frame.</p>
+
+    <div class="camera-layout">
+      <div class="camera-card">
+        <div class="eyebrow">live camera</div>
+        <div class="camera-preview">
+          <video id="cameraVideo" autoplay playsinline muted></video>
+          <div class="camera-placeholder" id="cameraPlaceholder">Tekan “Buka Kamera” untuk mulai.</div>
+        </div>
+
+        <div class="camera-actions">
+          <button class="btn btn-primary" id="openCamera">◉ Buka Kamera</button>
+          <button class="btn btn-soft" id="captureUser1" disabled>Ambil User 1</button>
+          <button class="btn btn-soft" id="captureUser2" disabled>Ambil User 2</button>
+          <button class="btn btn-ghost" id="switchCamera" disabled>↻ Ganti Kamera</button>
+        </div>
+
+        <div class="shots">
+          <div class="shot empty-shot" id="shot1">Foto User 1<br>belum diambil</div>
+          <div class="shot empty-shot" id="shot2">Foto User 2<br>belum diambil</div>
+        </div>
+
+        <div class="camera-actions">
+          <button class="btn btn-ghost" id="resetShots">Reset Foto</button>
+          <button class="btn btn-primary" id="saveDatePhoto" disabled>Simpan Foto Berdua ✦</button>
+        </div>
+        <div class="camera-status" id="cameraStatus">
+          Catatan: satu perangkat biasanya hanya menyediakan satu kamera aktif. Karena itu User 1 dan User 2 diambil bergantian, lalu digabung otomatis menjadi foto berdampingan.
+        </div>
+      </div>
+
+      <div class="camera-card">
+        <div class="eyebrow">date frame</div>
+        <div class="date-preview">
+          <div class="date-canvas-wrap"><canvas id="dateCanvas" width="1200" height="900"></canvas></div>
+          <div class="date-caption">just a little moment ✦<small>Fitriulfa × Friend • friendship date frame</small></div>
+        </div>
+        <div class="field" style="margin-top:13px">
+          <label>Caption foto</label>
+          <input id="dateCaption" value="just a little moment ✦" maxlength="80">
+        </div>
+        <div class="field" style="margin-top:10px">
+          <label>Nama User 1</label>
+          <input id="user1Name" value="User 1" maxlength="40">
+        </div>
+        <div class="field" style="margin-top:10px">
+          <label>Nama User 2</label>
+          <input id="user2Name" value="Fitriulfa" maxlength="40">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="page" id="activities">
+    <div class="eyebrow">daily story</div>
+    <h1>Tell me about your day.</h1>
+    <p class="lead">Hari ini Fitriulfa ngapain aja? Ceritakan sedikit. Tidak harus panjang — satu aktivitas kecil pun cukup untuk membuat hari ini punya tempat di sini.</p>
+    <div class="activity-layout">
+      <div class="card">
+        <div class="eyebrow">today's little story</div><h2>What happened today?</h2>
+        <form id="activityForm" class="form-grid" style="margin-top:18px">
+          <div class="field"><label>Tanggal</label><input type="date" id="activityDate" required></div>
+          <div class="field"><label>Jam / waktu</label><input type="time" id="activityTime"></div>
+          <div class="field full"><label>Kegiatan</label><input id="activityTitle" maxlength="120" required placeholder="Contoh: kerja, kuliah, jalan, makan, nonton, olahraga..."></div>
+          <div class="field"><label>Perasaan hari ini</label><select id="activityFeeling"><option>Happy</option><option>Calm</option><option>Excited</option><option>Tired</option><option>Sad</option><option>Grateful</option><option>Mixed</option></select></div>
+          <div class="field"><label>Dengan siapa?</label><input id="activityWith" maxlength="100" placeholder="Opsional"></div>
+          <div class="field full"><label>Cerita singkat</label><textarea id="activityNote" maxlength="3000" placeholder="Ceritain sedikit apa yang terjadi hari ini..."></textarea></div>
+          <div class="field full"><label>Foto kegiatan (opsional)</label>
+            <div class="upload-box"><label class="file-label"><span id="fileLabelText">＋ Pilih foto dari HP / komputer</span><input type="file" id="activityPhoto" accept="image/*" capture="environment"></label><img id="activityPreview" class="upload-preview" alt="Preview foto kegiatan"></div>
+          </div>
+          <div class="field full"><button class="btn btn-primary" type="submit">Simpan cerita hari ini ✦</button></div>
+        </form>
+      </div>
+      <div class="card"><div class="eyebrow">little archive</div><h2>Recent days.</h2><div id="activityList" class="activity-list"><div class="empty">Belum ada cerita dari server.</div></div></div>
+    </div>
+  </section>
+
+
+  <section class="page" id="syncdate">
+    <div class="eyebrow">two-phone date studio</div>
+    <h1>Same moment. Two cameras. One memory.</h1>
+    <p class="lead">Kamera kamu tampil sebagai kamera utama. Kamu bisa mengundang siapa pun lewat Room Code atau QR, lalu kamera mereka muncul live di frame sebelahnya.</p>
+
+    <div class="sync-layout">
+      <div class="sync-card">
+        <div class="eyebrow">two cameras · live</div>
+        <div class="sync-preview dual-live">
+          <div class="live-pane"><video id="syncVideo" autoplay playsinline muted></video><span>You</span></div>
+          <div class="live-pane remote-pane"><video id="syncRemoteVideo" autoplay playsinline muted></video><span id="remoteLabel">Partner</span><div class="remote-wait" id="remoteWait">Menunggu kamera partner…</div></div>
+          <div class="preview-copy" id="syncPreviewCopy">Buka kamera untuk mulai.</div>
+          <div class="sync-overlay" id="syncOverlay" aria-hidden="true"></div>
+          <div class="countdown" id="syncCountdown">3</div>
+        </div>
+        <div class="room-actions" style="margin-top:12px">
+          <button class="btn btn-primary" id="syncOpenCamera">◉ Buka Kamera</button>
+          <button class="btn btn-soft" id="syncSwitchCamera">↻ Ganti Kamera</button>
+        </div>
+        <div class="camera-effects">
+          <div class="eyebrow">camera mood</div>
+          <div class="effect-row" id="syncEffects">
+            <button type="button" class="effect-chip active" data-effect="dreamy">✨ Dreamy</button>
+            <button type="button" class="effect-chip" data-effect="hearts">♡ Hearts</button>
+            <button type="button" class="effect-chip" data-effect="film">✦ Film</button>
+            <button type="button" class="effect-chip" data-effect="soft">☁ Soft</button>
+            <button type="button" class="effect-chip" data-effect="none">○ Clean</button>
+          </div>
+        </div>
+
+        <div class="peer-status"><span class="status-dot" id="peerDot"></span><span id="peerStatus">Belum terhubung ke perangkat lain.</span></div>
+
+        <div class="room-actions" style="margin-top:12px">
+          <button class="btn btn-primary" id="createRoomBtn">＋ Buat Room</button>
+          <button class="btn btn-soft" id="joinRoomBtn">Masuk Room</button>
+        </div>
+
+        <div id="roomPanel" style="display:none;margin-top:14px">
+          <div class="eyebrow">room code</div>
+          <div class="room-code" id="roomCode">------</div>
+          <div id="qrBox"></div>
+          <div class="room-actions">
+            <button class="btn btn-ghost" id="copyRoomBtn">Salin Kode</button>
+            <button class="btn btn-ghost" id="shareRoomBtn">Bagikan</button>
+          </div>
+          <div class="field" style="margin-top:13px"><label>Nama kamu</label><input id="syncName" value="Saya" maxlength="40"></div>
+        </div>
+
+        <div id="joinPanel" style="display:none;margin-top:14px">
+          <div class="field"><label>Room Code</label><input id="joinCode" maxlength="8" placeholder="Contoh: A7K9P2"></div>
+          <div class="field" style="margin-top:10px"><label>Nama kamu</label><input id="joinName" value="Teman" maxlength="40"></div>
+          <button class="btn btn-primary" style="margin-top:10px;width:100%" id="confirmJoinBtn">Connect to Date Room ✦</button>
+        </div>
+
+        <div id="hostControl" style="display:none;margin-top:14px">
+          <div class="field"><label>Caption</label><input id="syncCaption" value="one moment, two places ✦" maxlength="80"></div>
+          <button class="btn btn-primary" style="width:100%;margin-top:10px" id="takeTogetherBtn" disabled>📸 TAKE TOGETHER</button>
+        </div>
+
+        <div class="sync-help">
+          <b>Cara pakai:</b> Kamu tekan <b>Buat Room</b> → kirim QR/kode ke teman → teman pilih <b>Masuk Room</b> → keduanya izinkan kamera → tunggu wajah partner muncul → tekan <b>TAKE TOGETHER</b>.
+        </div>
+      </div>
+
+      <div class="sync-card">
+        <div class="eyebrow">shared memory</div>
+        <h2>Two cameras, one little story.</h2>
+        <p class="lead">Foto dari masing-masing HP akan dikirim ke server. Dashboard kemudian menyimpan pasangan foto tersebut sebagai satu sesi memory.</p>
+        <div class="partner-photo">
+          <div><img id="localShotPreview" alt="Foto kamu"></div>
+          <div><img id="remoteShotPreview" alt="Foto partner"></div>
+        </div>
+        <div class="card" style="margin-top:12px;background:#faf7f8">
+          <div class="eyebrow">date note</div>
+          <h3 id="syncResultTitle">Waiting for a moment...</h3>
+          <p class="lead" id="syncResultText">Belum ada sesi foto bersama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="timeline">
+    <div class="eyebrow">our little timeline</div><h1>Things that happened.</h1><p class="lead">Edit isi timeline langsung di HTML. Ini sengaja dibuat sederhana supaya gampang kamu personalisasi.</p>
+    <div class="card" style="margin-top:20px">
+      <div class="timeline">
+        <div class="titem"><time>CHAPTER 01</time><h3>First conversation</h3><p>Tulis awal cerita atau kapan mulai sering ngobrol.</p></div>
+        <div class="titem"><time>CHAPTER 02</time><h3>The random phase</h3><p>Masukkan momen lucu, inside joke, atau kejadian random yang cuma kalian pahami.</p></div>
+        <div class="titem"><time>CHAPTER 03</time><h3>A memory worth keeping</h3><p>Hubungkan dengan salah satu dari dua memory di halaman Memory Lane.</p></div>
+        <div class="titem"><time>NOW</time><h3>Still collecting little things</h3><p>Karena beberapa pertemanan justru terasa spesial dari hal-hal kecil.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">Made as a personal friendship scrapbook • not a public profile</div>
+</main>
+</div>
+
+<div class="mobile-nav">
+  <button class="active" data-page="home"><span>⌂</span>Home</button>
+  <button data-page="photos"><span>◫</span>Photos</button>
+  <button data-page="videos"><span>▶</span>Videos</button>
+  <button data-page="qa"><span>?</span>Q&A</button>
+  <button data-page="message"><span>✉</span>Message</button>
+  <button data-page="camera"><span>◉</span>Camera</button>
+  <button data-page="activities"><span>✎</span>Story</button>
+  <button data-page="syncdate"><span>⇄</span>2-Phone</button>
+</div>
+
+<div class="toast" id="toast"></div>
+<audio id="bgMusic" loop preload="none"><source src="assets/music.mp3" type="audio/mpeg"></audio>
+
+<script>
+/* ==========================================================
+   FITRIULFA FRIENDSHIP DASHBOARD
+   GitHub Pages frontend + Google Apps Script backend
+   ========================================================== */
+
+const CONFIG = {
+  API_URL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  APP_TOKEN: "FITRIULFA_2026"
+};
+
+const QUESTIONS = [
+  {id:"q01", category:"personal", text:"Sekarang lagi dekat atau sering ngobrol dengan siapa?"},
+  {id:"q02", category:"personal", text:"Ada seseorang yang akhir-akhir ini sering kepikiran?"},
+  {id:"q03", category:"personal", text:"Kalau ada orang yang kamu suka, biasanya kamu kasih kode atau diam?"},
+  {id:"q04", category:"personal", text:"Pernah nggak tiba-tiba suka sama seseorang tanpa direncanakan?"},
+  {id:"q05", category:"personal", text:"Kalau seseorang dari masa lalu datang lagi, kamu bakal kasih kesempatan?"},
+  {id:"q06", category:"personal", text:"Siapa yang sampai sekarang masih kamu sayang?"},
+  {id:"q07", category:"personal", text:"Ada seseorang yang sebenarnya belum benar-benar kamu lupakan?"},
+  {id:"q08", category:"personal", text:"Saat ini kamu sebenarnya sedang membuka hati atau masih nyaman sendiri?"},
+  {id:"q09", category:"personal", text:"Apa yang kamu cari dari seseorang yang ingin dekat denganmu?"},
+  {id:"q10", category:"fun", text:"Hal kecil apa yang paling gampang bikin mood kamu balik bagus?"},
+  {id:"q11", category:"fun", text:"Kalau bisa mengulang satu hari, kamu mau mengulang hari yang mana?"},
+  {id:"q12", category:"fun", text:"Tiga kata yang paling menggambarkan dirimu sekarang?"},
+  {id:"q13", category:"fun", text:"Kalau hidupmu punya soundtrack hari ini, lagunya seperti apa?"},
+  {id:"q14", category:"fun", text:"Apa kebiasaan random kamu yang mungkin orang lain nggak tahu?"},
+  {id:"q15", category:"friendship", text:"Menurutmu, apa yang bikin sebuah pertemanan bisa terasa nyaman?"},
+  {id:"q16", category:"friendship", text:"Apa satu hal yang kamu hargai dari teman dekat?"},
+  {id:"q17", category:"friendship", text:"Lebih suka teman yang sering chat atau yang jarang tapi selalu ada saat dibutuhkan?"}
+];
+
+let currentQuestion = 0;
+let selectedMood = "";
+
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
+  document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="qa") loadQuestion();
+  if(id==="message") loadRecentMessages();
+  if(id==="activities") loadActivities();
+}
+document.querySelectorAll("[data-page]").forEach(btn=>btn.addEventListener("click",()=>showPage(btn.dataset.page)));
+
+function toast(msg, good=true){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.style.background=good?"#24222b":"#9a4052";
+  el.classList.add("show"); setTimeout(()=>el.classList.remove("show"),2800);
+}
+function apiReady(){return CONFIG.API_URL && !CONFIG.API_URL.includes("PASTE_YOUR");}
+
+async function apiGet(action, extra={}){
+  if(!apiReady()) throw new Error("API URL belum diisi.");
+  const qs=new URLSearchParams({action,...extra});
+  const res=await fetch(CONFIG.API_URL+"?"+qs.toString(),{method:"GET",cache:"no-store"});
+  const text=await res.text(); let data;
+  try{data=JSON.parse(text)}catch(e){throw new Error("Respons server bukan JSON.");}
+  if(!data.ok) throw new Error(data.message||"Server error");
+  return data;
+}
+async function apiPost(action,payload={}){
+  if(!apiReady()) throw new Error("API URL belum diisi.");
+  const body=JSON.stringify({action,token:CONFIG.APP_TOKEN,...payload});
+  const res=await fetch(CONFIG.API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body});
+  const text=await res.text(); let data;
+  try{data=JSON.parse(text)}catch(e){throw new Error("Respons server bukan JSON.");}
+  if(!data.ok) throw new Error(data.message||"Server error");
+  return data;
+}
+
+function loadQuestion(){
+  currentQuestion=Math.floor(Math.random()*QUESTIONS.length);
+  const q=QUESTIONS[currentQuestion];
+  document.getElementById("qNumber").textContent=`Question ${currentQuestion+1} / ${QUESTIONS.length} • ${q.category}`;
+  document.getElementById("questionText").textContent=q.text;
+  document.getElementById("answerText").value="";
+  document.getElementById("answerStatus").innerHTML="";
+}
+document.getElementById("skipQuestion").onclick=loadQuestion;
+document.getElementById("submitAnswer").onclick=async()=>{
+  const q=QUESTIONS[currentQuestion], answer=document.getElementById("answerText").value.trim();
+  if(!answer){toast("Isi jawaban dulu ya.",false);return}
+  const btn=document.getElementById("submitAnswer"); btn.disabled=true; btn.textContent="Saving...";
+  try{
+    await apiPost("saveAnswer",{questionId:q.id,question:q.text,category:q.category,answer});
+    toast("Jawaban berhasil tersimpan ✦");
+    document.getElementById("answerText").value="";
+    setTimeout(loadQuestion,500);
+    loadDashboard();
+  }catch(e){toast(e.message,false)}
+  finally{btn.disabled=false;btn.textContent="Save answer ✦"}
+};
+
+document.getElementById("messageForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const text=document.getElementById("messageText").value.trim();
+  if(!text)return;
+  const btn=e.target.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Sending...";
+  try{
+    await apiPost("saveMessage",{
+      name:document.getElementById("messageName").value.trim()||"Fitriulfa",
+      category:document.getElementById("messageCategory").value,
+      message:text
+    });
+    e.target.reset();document.getElementById("messageName").value="Fitriulfa";
+    toast("Pesan sudah masuk ke server ✦");loadRecentMessages();loadDashboard();
+  }catch(err){toast(err.message,false)}
+  finally{btn.disabled=false;btn.textContent="Kirim ke server ✦"}
+});
+
+document.querySelectorAll(".mood").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".mood").forEach(x=>x.classList.remove("selected"));
+  b.classList.add("selected");selectedMood=b.dataset.mood;
+});
+document.getElementById("saveMood").onclick=async()=>{
+  if(!selectedMood){toast("Pilih mood dulu.",false);return}
+  const btn=document.getElementById("saveMood");btn.disabled=true;btn.textContent="Saving...";
+  try{
+    await apiPost("saveMood",{mood:selectedMood,note:document.getElementById("moodNote").value.trim()});
+    toast("Mood berhasil disimpan ✦");loadDashboard();
+  }catch(e){toast(e.message,false)}
+  finally{btn.disabled=false;btn.textContent="Save mood ✦"}
+};
+
+
+
+/* ---------------- DAILY STORY + PHOTO UPLOAD ---------------- */
+function todayISO(){const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)}
+if(document.getElementById("activityDate")) document.getElementById("activityDate").value=todayISO();
+document.getElementById("activityPhoto")?.addEventListener("change",e=>{
+  const file=e.target.files[0];if(!file)return;
+  document.getElementById("fileLabelText").textContent="✓ "+file.name;
+  const img=document.getElementById("activityPreview");img.src=URL.createObjectURL(file);img.style.display="block";
+});
+function compressImage(file,maxSize=1100,quality=.78){return new Promise((resolve,reject)=>{
+  const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{
+    const scale=Math.min(1,maxSize/Math.max(img.width,img.height)),c=document.createElement("canvas");
+    c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+    resolve(c.toDataURL("image/jpeg",quality));
+  };img.onerror=reject;img.src=reader.result};reader.onerror=reject;reader.readAsDataURL(file);
+})}
+document.getElementById("activityForm")?.addEventListener("submit",async e=>{
+  e.preventDefault();const btn=e.target.querySelector("button[type=submit]"),file=document.getElementById("activityPhoto").files[0];
+  btn.disabled=true;btn.textContent="Menyimpan...";
+  try{
+    let image="";if(file)image=await compressImage(file);
+    await apiPost("saveActivity",{date:document.getElementById("activityDate").value,time:document.getElementById("activityTime").value,title:document.getElementById("activityTitle").value.trim(),feeling:document.getElementById("activityFeeling").value,withWho:document.getElementById("activityWith").value.trim(),note:document.getElementById("activityNote").value.trim(),image});
+    toast("Cerita hari ini berhasil disimpan ✦");e.target.reset();document.getElementById("activityDate").value=todayISO();
+    document.getElementById("activityPreview").style.display="none";document.getElementById("fileLabelText").textContent="＋ Pilih foto dari HP / komputer";loadActivities();
+  }catch(err){toast(err.message,false)}finally{btn.disabled=false;btn.textContent="Simpan cerita hari ini ✦"}
+});
+async function loadActivities(){
+  const box=document.getElementById("activityList");if(!box)return;
+  if(!apiReady()){box.innerHTML='<div class="empty">Hubungkan API_URL untuk menampilkan cerita dari server.</div>';return}
+  box.innerHTML='<div class="empty">Loading...</div>';
+  try{
+    const d=await apiGet("getActivities",{limit:12});
+    if(!d.items.length){box.innerHTML='<div class="empty">Belum ada kegiatan tersimpan.</div>';return}
+    box.innerHTML=d.items.map(x=>`<div class="card activity-item"><div><div class="activity-date">${escapeHtml(x.date||"")}</div><div class="activity-time">${escapeHtml(x.time||"")}</div></div><div><h4>${escapeHtml(x.title||"")}</h4><p>${escapeHtml(x.feeling||"")} ${x.withWho?`• ${escapeHtml(x.withWho)}`:""}<br>${escapeHtml(x.note||"")}</p></div>${x.imageUrl?`<img class="activity-thumb" src="${escapeHtml(x.imageUrl)}" alt="Foto kegiatan">`:""}</div>`).join("");
+  }catch(e){box.innerHTML=`<div class="empty">${escapeHtml(e.message)}</div>`}
+}
+
+
+/* ================= TWO-PHONE DATE / WEBRTC ================= */
+let syncStream=null, syncFacing="user", syncRole="", syncRoom="", syncPC=null, syncDC=null, syncRemoteStream=null;
+let syncPollTimer=null, syncSignalSeen=0, syncLocalShot="", syncRemoteShot="", syncPartnerName="Partner";
+let syncRemoteDescriptionReady=false, syncPendingRemoteIce=[];
+let syncShotBusy=false, syncMakingOffer=false;
+const rtcConfig={iceServers:[
+  {urls:"stun:stun.l.google.com:19302"},
+  {urls:"stun:stun1.l.google.com:19302"}
+]};
+
+function getMyName(){
+  const id=syncRole==="host"?"syncName":"joinName";
+  return (document.getElementById(id)?.value||"Saya").trim()||"Saya";
+}
+function setRemoteLabel(name){
+  syncPartnerName=(name||"Partner").trim()||"Partner";
+  const el=document.getElementById("remoteLabel"); if(el)el.textContent=syncPartnerName;
+}
+function generateRoomCode(){
+  const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let s="";
+  for(let i=0;i<6;i++)s+=chars[Math.floor(Math.random()*chars.length)];
+  return s;
+}
+function setPeerStatus(text,ok=false){
+  const st=document.getElementById("peerStatus"),dot=document.getElementById("peerDot"),btn=document.getElementById("takeTogetherBtn");
+  if(st)st.textContent=text;
+  if(dot)dot.classList.toggle("ok",ok);
+  if(btn)btn.disabled=!(ok && syncRole==="host");
+}
+let syncEffect="dreamy";
+function applySyncEffect(effect){
+  syncEffect=effect;
+  const preview=document.querySelector(".sync-preview");
+  if(preview){["dreamy","hearts","film","soft"].forEach(x=>preview.classList.remove("effect-"+x));if(effect!=="none")preview.classList.add("effect-"+effect);}
+  document.querySelectorAll("#syncEffects .effect-chip").forEach(b=>b.classList.toggle("active",b.dataset.effect===effect));
+}
+document.querySelectorAll("#syncEffects .effect-chip").forEach(b=>b.addEventListener("click",()=>applySyncEffect(b.dataset.effect)));
+applySyncEffect("dreamy");
+
+function stopSyncCamera(){
+  if(syncStream){syncStream.getTracks().forEach(t=>t.stop());syncStream=null;}
+  const v=document.getElementById("syncVideo"); if(v)v.srcObject=null;
+}
+async function openSyncCamera(){
+  try{
+    if(!navigator.mediaDevices?.getUserMedia)throw new Error("getUserMedia unavailable");
+    stopSyncCamera();
+    syncStream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:{ideal:syncFacing},width:{ideal:1280},height:{ideal:960},frameRate:{ideal:30,max:30}},audio:false
+    });
+    const local=document.getElementById("syncVideo");
+    local.muted=true;local.autoplay=true;local.playsInline=true;local.srcObject=syncStream;
+    await local.play().catch(()=>{});
+    document.getElementById("syncPreviewCopy").textContent="Kamera kamu aktif. ✦";
+    if(syncPC){
+      const trans=syncPC.getTransceivers().find(t=>t.receiver?.track?.kind==="video" || t.sender?.track?.kind==="video" || t.mid===null);
+      const sender=trans?.sender || syncPC.getSenders().find(s=>s.track?.kind==="video");
+      if(sender)await sender.replaceTrack(syncStream.getVideoTracks()[0]);
+    }
+  }catch(e){
+    console.error("Camera",e);
+    toast("Kamera tidak bisa dibuka. Pastikan HTTPS dan izin kamera aktif.",false);
+  }
+}
+
+document.getElementById("syncOpenCamera")?.addEventListener("click",openSyncCamera);
+document.getElementById("syncSwitchCamera")?.addEventListener("click",async()=>{syncFacing=syncFacing==="user"?"environment":"user";await openSyncCamera()});
+
+function createPeerConnection(){
+  if(syncPC)syncPC.close();
+  syncRemoteDescriptionReady=false;syncPendingRemoteIce=[];syncRemoteStream=null;
+  syncPC=new RTCPeerConnection(rtcConfig);
+
+  // One video transceiver is created up-front so BOTH offer and answer explicitly
+  // negotiate SEND + RECEIVE video. This is the key fix for the blank partner pane.
+  const trans=syncPC.addTransceiver("video",{direction:"sendrecv"});
+  const localTrack=syncStream?.getVideoTracks?.()[0];
+  if(localTrack)trans.sender.replaceTrack(localTrack);
+
+  const rv=document.getElementById("syncRemoteVideo");
+  rv.muted=true;rv.autoplay=true;rv.playsInline=true;
+
+  syncPC.ontrack=async e=>{
+    if(e.track.kind!=="video")return;
+    if(!syncRemoteStream)syncRemoteStream=new MediaStream();
+    if(!syncRemoteStream.getTracks().some(t=>t.id===e.track.id))syncRemoteStream.addTrack(e.track);
+    rv.srcObject=syncRemoteStream;
+    document.getElementById("remoteWait").style.display="none";
+    document.getElementById("syncPreviewCopy").textContent="Dua kamera aktif. ✦";
+    await rv.play().catch(()=>{});
+    setPeerStatus("Partner camera live — siap foto. ✦",true);
+  };
+  syncPC.onicecandidate=e=>{if(e.candidate)sendSignal({type:"ice",candidate:e.candidate.toJSON?e.candidate.toJSON():e.candidate});};
+  syncPC.onconnectionstatechange=()=>{
+    const s=syncPC.connectionState;
+    if(s==="connected"){
+      setPeerStatus("Connected — kamera partner tampil. ✦",true);
+      toast("Kamera partner sudah muncul ✦");
+    }else if(s==="connecting")setPeerStatus("Menghubungkan kamera partner…",false);
+    else if(s==="failed")setPeerStatus("Koneksi gagal. Coba Room baru.",false);
+    else if(s==="disconnected")setPeerStatus("Koneksi terputus. Tunggu sebentar…",false);
+  };
+  syncPC.ondatachannel=e=>{syncDC=e.channel;setupDataChannel()};
+}
+function setupDataChannel(){
+  if(!syncDC)return;
+  syncDC.onopen=()=>setPeerStatus("Connected — kamera partner tampil. ✦",true);
+  syncDC.onclose=()=>setPeerStatus("Partner disconnected.",false);
+  syncDC.onerror=e=>console.warn("DataChannel",e);
+  syncDC.onmessage=e=>{try{handleSyncMessage(JSON.parse(e.data))}catch(err){console.warn(err)}};
+}
+function sendDC(obj){if(syncDC&&syncDC.readyState==="open")syncDC.send(JSON.stringify(obj))}
+
+function waitIceGathering(pc,timeout=6000){
+  if(pc.iceGatheringState==="complete")return Promise.resolve();
+  return new Promise(resolve=>{
+    const done=()=>{cleanup();resolve()};
+    const timer=setTimeout(done,timeout);
+    const cleanup=()=>{clearTimeout(timer);pc.removeEventListener("icegatheringstatechange",check)};
+    const check=()=>{if(pc.iceGatheringState==="complete")done()};
+    pc.addEventListener("icegatheringstatechange",check);
+  });
+}
+async function createRoom(){
+  if(!apiReady()){toast("API_URL belum diisi.",false);return}
+  if(!syncStream)await openSyncCamera();
+  if(!syncStream){toast("Buka kamera kamu dulu.",false);return}
+  syncRole="host";syncRoom=generateRoomCode();syncSignalSeen=0;syncLocalShot="";syncRemoteShot="";
+  document.getElementById("roomCode").textContent=syncRoom;
+  document.getElementById("roomPanel").style.display="block";document.getElementById("joinPanel").style.display="none";document.getElementById("hostControl").style.display="block";
+  document.getElementById("qrBox").innerHTML="";
+  new QRCode(document.getElementById("qrBox"),{text:location.href.split("#")[0]+"#date-room="+syncRoom,width:170,height:170,colorDark:"#7562a8",colorLight:"#ffffff"});
+  setRemoteLabel("Menunggu partner");
+  document.getElementById("remoteWait").style.display="block";
+  createPeerConnection();
+  syncDC=syncPC.createDataChannel("date",{ordered:true});setupDataChannel();
+  const offer=await syncPC.createOffer();await syncPC.setLocalDescription(offer);await waitIceGathering(syncPC);
+  await apiPost("createRoom",{room:syncRoom,offer:JSON.stringify(syncPC.localDescription),name:getMyName()});
+  startSignalPolling();setPeerStatus("Room siap. Kirim QR/kode ke teman…",false);
+  toast("Room dibuat. Undang teman dengan QR atau kode ✦");
+}
+document.getElementById("createRoomBtn")?.addEventListener("click",createRoom);
+document.getElementById("joinRoomBtn")?.addEventListener("click",()=>{
+  document.getElementById("joinPanel").style.display="block";document.getElementById("roomPanel").style.display="none";document.getElementById("hostControl").style.display="none";
+});
+document.getElementById("confirmJoinBtn")?.addEventListener("click",joinRoom);
+
+async function joinRoom(){
+  if(!apiReady()){toast("API_URL belum diisi.",false);return}
+  if(!syncStream)await openSyncCamera();
+  if(!syncStream){toast("Buka kamera kamu dulu.",false);return}
+  syncRole="guest";syncRoom=document.getElementById("joinCode").value.trim().toUpperCase();
+  if(!/^[A-Z0-9]{6}$/.test(syncRoom)){toast("Room Code harus 6 karakter.",false);return}
+  createPeerConnection();
+  document.getElementById("roomPanel").style.display="block";document.getElementById("joinPanel").style.display="none";document.getElementById("hostControl").style.display="none";
+  document.getElementById("roomCode").textContent=syncRoom;document.getElementById("remoteWait").style.display="block";
+  const result=await apiPost("joinRoom",{room:syncRoom,name:getMyName()});
+  setRemoteLabel(result.hostName||"Partner");
+  startSignalPolling();setPeerStatus("Room ditemukan. Menunggu kamera partner…",false);
+}
+
+async function sendSignal(payload){
+  if(!syncRoom)return;
+  try{await apiPost("signalSend",{room:syncRoom,role:syncRole,payload:JSON.stringify(payload)})}catch(e){console.warn("signalSend",e)}
+}
+async function startSignalPolling(){
+  clearInterval(syncPollTimer);syncSignalSeen=0;
+  const poll=async()=>{
+    try{
+      const d=await apiGet("signalGet",{room:syncRoom,role:syncRole,since:syncSignalSeen});
+      for(const item of d.items){syncSignalSeen=Math.max(syncSignalSeen,Number(item.id)||0);await handleSignal(JSON.parse(item.payload));}
+    }catch(e){console.warn("signalGet",e)}
+  };
+  await poll();syncPollTimer=setInterval(poll,500);
+}
+async function handleSignal(msg){
+  try{
+    if(msg.type==="answer" && syncRole==="host"){
+      if(syncPC.currentRemoteDescription)return;
+      await syncPC.setRemoteDescription(JSON.parse(msg.description));syncRemoteDescriptionReady=true;await flushRemoteIce();
+    }else if(msg.type==="offer" && syncRole==="guest"){
+      if(syncPC.currentRemoteDescription)return;
+      await syncPC.setRemoteDescription(JSON.parse(msg.description));syncRemoteDescriptionReady=true;await flushRemoteIce();
+      const answer=await syncPC.createAnswer();await syncPC.setLocalDescription(answer);await waitIceGathering(syncPC);
+      await sendSignal({type:"answer",description:JSON.stringify(syncPC.localDescription)});
+    }else if(msg.type==="ice"){
+      if(!msg.candidate)return;
+      if(!syncRemoteDescriptionReady)syncPendingRemoteIce.push(msg.candidate);else await syncPC.addIceCandidate(msg.candidate);
+    }
+  }catch(e){console.warn("WebRTC signaling",e)}
+}
+async function flushRemoteIce(){
+  const q=syncPendingRemoteIce.splice(0);for(const c of q){try{await syncPC.addIceCandidate(c)}catch(e){console.warn("ICE",e)}}
+}
+document.getElementById("copyRoomBtn")?.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(syncRoom);toast("Room Code tersalin ✦")}catch(e){toast(syncRoom)}});
+document.getElementById("shareRoomBtn")?.addEventListener("click",async()=>{
+  const url=location.href.split("#")[0]+"#date-room="+syncRoom;
+  if(navigator.share)await navigator.share({title:"Photo Room",text:"Join my camera room ✦",url});else{await navigator.clipboard.writeText(url);toast("Link room disalin ✦")}
+});
+
+function drawCover(ctx,video,x,y,w,h,mirror=false){
+  if(!video||!video.videoWidth||!video.videoHeight)return false;
+  const vw=video.videoWidth,vh=video.videoHeight,scale=Math.max(w/vw,h/vh),dw=vw*scale,dh=vh*scale;
+  ctx.save();ctx.translate(x+w/2,y+h/2);if(mirror)ctx.scale(-1,1);ctx.drawImage(video,-dw/2,-dh/2,dw,dh);ctx.restore();return true;
+}
+function drawCuteBackground(ctx,w,h){
+  const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,"#fff7fb");g.addColorStop(.48,"#f4eef8");g.addColorStop(1,"#fff5f0");ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+  const blobs=[[.12,.18,120],[.88,.22,150],[.18,.88,160],[.86,.84,130]];
+  blobs.forEach(([x,y,r],i)=>{const rg=ctx.createRadialGradient(w*x,h*y,0,w*x,h*y,r);rg.addColorStop(0,i%2?"rgba(186,160,235,.22)":"rgba(255,170,205,.20)");rg.addColorStop(1,"rgba(255,255,255,0)");ctx.fillStyle=rg;ctx.beginPath();ctx.arc(w*x,h*y,r,0,Math.PI*2);ctx.fill()});
+}
+function drawEffectOverlay(ctx,w,h){
+  if(syncEffect==="none")return;ctx.save();
+  if(syncEffect==="dreamy"){ctx.fillStyle="rgba(255,222,238,.08)";ctx.fillRect(0,0,w,h);ctx.strokeStyle="rgba(255,255,255,.28)";ctx.lineWidth=2;ctx.strokeRect(10,10,w-20,h-20)}
+  if(syncEffect==="soft"){const rg=ctx.createRadialGradient(w/2,h/2,Math.min(w,h)*.2,w/2,h/2,Math.max(w,h)*.72);rg.addColorStop(0,"rgba(255,255,255,0)");rg.addColorStop(1,"rgba(255,215,232,.22)");ctx.fillStyle=rg;ctx.fillRect(0,0,w,h)}
+  if(syncEffect==="film"){ctx.fillStyle="rgba(245,220,200,.08)";ctx.fillRect(0,0,w,h);ctx.fillStyle="rgba(255,255,255,.16)";for(let y=0;y<h;y+=6)ctx.fillRect(0,y,w,1);ctx.strokeStyle="rgba(255,255,255,.32)";ctx.lineWidth=3;ctx.strokeRect(12,12,w-24,h-24)}
+  if(syncEffect==="hearts"){ctx.font="32px Arial";ctx.fillStyle="rgba(255,255,255,.76)";ctx.textAlign="center";[.12,.29,.51,.73,.9].forEach((x,i)=>ctx.fillText(i%2?"✦":"♡",w*x,h*(.16+(i%3)*.28)));ctx.font="20px Arial";ctx.fillStyle="rgba(255,214,233,.86)";ctx.fillText("♡     ✦     ♡     ✦     ♡",w/2,h*.92)}
+  ctx.restore();
+}
+function captureSyncFrame(){
+  const local=document.getElementById("syncVideo"),remote=document.getElementById("syncRemoteVideo");
+  const c=document.createElement("canvas");c.width=1400;c.height=820;const ctx=c.getContext("2d");drawCuteBackground(ctx,c.width,c.height);
+  const gap=10,w=(c.width-gap)/2;drawCover(ctx,local,0,0,w,c.height,syncFacing==="user");drawCover(ctx,remote,w+gap,0,w,c.height,false);
+  ctx.fillStyle="rgba(255,255,255,.76)";ctx.fillRect(w,0,gap,c.height);drawEffectOverlay(ctx,c.width,c.height);
+  ctx.fillStyle="rgba(255,255,255,.92)";ctx.font="600 20px Arial";ctx.textAlign="center";ctx.fillText(`${getMyName()}  ×  ${syncPartnerName}`,c.width/2,c.height-24);
+  return c.toDataURL("image/jpeg",.78);
+}
+function showCountdown(ms){
+  const el=document.getElementById("syncCountdown"),start=Date.now();el.classList.add("show");
+  const tick=()=>{const left=Math.max(0,ms-(Date.now()-start));el.textContent=left>2200?"3":left>1200?"2":left>300?"1":"✦";if(left>0)requestAnimationFrame(tick);else setTimeout(()=>el.classList.remove("show"),350)};tick();
+}
+function scheduleLocalCapture(target){
+  const delay=Math.max(0,target-Date.now());showCountdown(delay+350);
+  setTimeout(()=>{
+    syncLocalShot=captureSyncFrame();document.getElementById("localShotPreview").src=syncLocalShot;
+    sendDC({type:"shot",image:syncLocalShot,name:getMyName()});
+  },delay);
+}
+document.getElementById("takeTogetherBtn")?.addEventListener("click",()=>{
+  if(!syncDC||syncDC.readyState!=="open"){toast("Partner belum siap.",false);return}
+  if(!syncRemoteStream){toast("Wajah partner belum tampil.",false);return}
+  const target=Date.now()+3500;sendDC({type:"take",target});scheduleLocalCapture(target);
+});
+async function handleSyncMessage(msg){
+  if(msg.type==="take")scheduleLocalCapture(msg.target);
+  if(msg.type==="shot"){
+    syncRemoteShot=msg.image;setRemoteLabel(msg.name||"Partner");
+    document.getElementById("remoteShotPreview").src=syncRemoteShot;
+    document.getElementById("syncResultTitle").textContent="Two cameras. One shared memory. ✦";
+    document.getElementById("syncResultText").textContent=`${getMyName()} × ${syncPartnerName}`;
+    if(syncLocalShot)await saveSyncedPair();
+  }
+}
+async function saveSyncedPair(){
+  if(!syncLocalShot||!syncRemoteShot||!apiReady()||syncShotBusy)return;syncShotBusy=true;
+  try{await apiPost("saveSyncedPhoto",{room:syncRoom,name:getMyName(),image:syncLocalShot,caption:document.getElementById("syncCaption")?.value||"one moment, two places ✦"});toast("Foto bersama berhasil tersimpan ✦");}
+  catch(e){console.warn(e);toast("Foto jadi, tetapi upload server gagal.",false)}finally{syncShotBusy=false;}
+}
+
+// Auto-fill room from QR/hash
+(function(){
+  const m=location.hash.match(/date-room=([A-Z0-9]{6})/i);
+  if(m){showPage("syncdate");document.getElementById("joinCode").value=m[1].toUpperCase();document.getElementById("joinPanel").style.display="block"}
+})();
+
+/* ---------------- CAMERA + DATE PHOTO ---------------- */
+let cameraStream = null;
+let cameraFacing = "user";
+let shotUser1 = null;
+let shotUser2 = null;
+
+const cameraVideo = document.getElementById("cameraVideo");
+const cameraPlaceholder = document.getElementById("cameraPlaceholder");
+const openCameraBtn = document.getElementById("openCamera");
+const capture1Btn = document.getElementById("captureUser1");
+const capture2Btn = document.getElementById("captureUser2");
+const switchCameraBtn = document.getElementById("switchCamera");
+const saveDateBtn = document.getElementById("saveDatePhoto");
+const dateCanvas = document.getElementById("dateCanvas");
+const dateCtx = dateCanvas.getContext("2d");
+
+async function startCamera(){
+  try{
+    if(cameraStream) cameraStream.getTracks().forEach(t=>t.stop());
+    cameraStream = await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:{ideal:cameraFacing},width:{ideal:1280},height:{ideal:960}},
+      audio:false
+    });
+    cameraVideo.srcObject=cameraStream;
+    cameraPlaceholder.style.display="none";
+    capture1Btn.disabled=false;
+    capture2Btn.disabled=false;
+    switchCameraBtn.disabled=false;
+    cameraStatus("Kamera aktif. Ambil User 1 lalu User 2.");
+  }catch(e){
+    toast("Kamera tidak bisa dibuka. Pastikan izin kamera diberikan dan gunakan HTTPS/GitHub Pages.",false);
+    cameraStatus("Kamera gagal dibuka: "+e.message);
+  }
+}
+function cameraStatus(text){document.getElementById("cameraStatus").textContent=text}
+
+openCameraBtn.onclick=startCamera;
+switchCameraBtn.onclick=async()=>{
+  cameraFacing=cameraFacing==="user"?"environment":"user";
+  await startCamera();
+};
+
+function captureShot(which){
+  if(!cameraStream){toast("Buka kamera dulu.",false);return}
+  const c=document.createElement("canvas");
+  const w=cameraVideo.videoWidth||1200, h=cameraVideo.videoHeight||900;
+  const size=Math.min(w,h);
+  c.width=1000;c.height=1000;
+  const ctx=c.getContext("2d");
+  ctx.translate(500,500);
+  if(cameraFacing==="user") ctx.scale(-1,1);
+  const scale=Math.max(1000/w,1000/h);
+  ctx.drawImage(cameraVideo,-w*scale/2,-h*scale/2,w*scale,h*scale);
+  const data=c.toDataURL("image/jpeg",.84);
+  if(which===1) shotUser1=data; else shotUser2=data;
+  renderShots();
+  renderDateFrame();
+  saveDateBtn.disabled=!(shotUser1&&shotUser2);
+  cameraStatus(`Foto User ${which} berhasil diambil. ${shotUser1&&shotUser2?"Keduanya siap — tinggal simpan.":"Sekarang ambil foto yang satunya."}`);
+}
+capture1Btn.onclick=()=>captureShot(1);
+capture2Btn.onclick=()=>captureShot(2);
+
+function renderShots(){
+  const s1=document.getElementById("shot1"),s2=document.getElementById("shot2");
+  s1.innerHTML=shotUser1?`<img src="${shotUser1}"><span class="label">USER 1</span>`:"Foto User 1<br>belum diambil";
+  s2.innerHTML=shotUser2?`<img src="${shotUser2}"><span class="label">USER 2</span>`:"Foto User 2<br>belum diambil";
+  s1.classList.toggle("empty-shot",!shotUser1);s2.classList.toggle("empty-shot",!shotUser2);
+}
+
+function loadImg(src){
+  return new Promise((resolve,reject)=>{
+    const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src;
+  });
+}
+async function renderDateFrame(){
+  if(!shotUser1&&!shotUser2){
+    dateCtx.fillStyle="#eee9e3";dateCtx.fillRect(0,0,1200,900);
+    dateCtx.fillStyle="#9b958e";dateCtx.font="24px DM Sans";dateCtx.textAlign="center";
+    dateCtx.fillText("Your two-photo frame will appear here",600,450);return;
+  }
+  dateCtx.fillStyle="#f8f3ee";dateCtx.fillRect(0,0,1200,900);
+  if(shotUser1){
+    const im=await loadImg(shotUser1);dateCtx.drawImage(im,40,40,540,700);
+  }else{dateCtx.fillStyle="#e9e4de";dateCtx.fillRect(40,40,540,700)}
+  if(shotUser2){
+    const im=await loadImg(shotUser2);dateCtx.drawImage(im,620,40,540,700);
+  }else{dateCtx.fillStyle="#e9e4de";dateCtx.fillRect(620,40,540,700)}
+  dateCtx.fillStyle="#2b2730";dateCtx.font="600 28px Playfair Display";dateCtx.textAlign="center";
+  dateCtx.fillText(document.getElementById("dateCaption").value||"just a little moment ✦",600,790);
+  dateCtx.fillStyle="#817b84";dateCtx.font="16px DM Sans";
+  dateCtx.fillText(`${document.getElementById("user1Name").value||"User 1"}  ×  ${document.getElementById("user2Name").value||"Fitriulfa"}`,600,825);
+  dateCtx.fillText(new Date().toLocaleDateString("id-ID",{day:"2-digit",month:"long",year:"numeric"}),600,855);
+}
+["dateCaption","user1Name","user2Name"].forEach(id=>document.getElementById(id).addEventListener("input",renderDateFrame));
+
+document.getElementById("resetShots").onclick=()=>{
+  shotUser1=null;shotUser2=null;renderShots();renderDateFrame();saveDateBtn.disabled=true;
+  cameraStatus("Foto di-reset. Ambil User 1 dan User 2 lagi.");
+};
+
+saveDateBtn.onclick=async()=>{
+  if(!shotUser1||!shotUser2){toast("Ambil kedua foto dulu.",false);return}
+  if(!apiReady()){toast("API_URL belum diisi.",false);return}
+  const btn=saveDateBtn;btn.disabled=true;btn.textContent="Uploading...";
+  try{
+    await renderDateFrame();
+    const imageData=dateCanvas.toDataURL("image/jpeg",.82);
+    const result=await apiPost("saveDatePhoto",{
+      image:imageData,
+      user1:document.getElementById("user1Name").value.trim()||"User 1",
+      user2:document.getElementById("user2Name").value.trim()||"Fitriulfa",
+      caption:document.getElementById("dateCaption").value.trim()||"just a little moment ✦"
+    });
+    toast("Foto date berhasil tersimpan di server ✦");
+    cameraStatus(result.url?`Tersimpan di Google Drive. URL: ${result.url}`:"Foto berhasil tersimpan.");
+  }catch(e){toast(e.message,false)}
+  finally{btn.disabled=false;btn.textContent="Simpan Foto Berdua ✦"}
+}
+
+async function loadDashboard(){
+  if(!apiReady()){
+    document.getElementById("statMessages").textContent="—";
+    document.getElementById("statAnswers").textContent="—";
+    document.getElementById("statMood").textContent="—";
+    return;
+  }
+  try{
+    const d=await apiGet("getDashboard");
+    document.getElementById("statMessages").textContent=d.stats.messages;
+    document.getElementById("statAnswers").textContent=d.stats.answers;
+    document.getElementById("statMood").textContent=d.stats.mood||"—";
+  }catch(e){console.warn(e)}
+}
+async function loadRecentMessages(){
+  const box=document.getElementById("recentMessages");
+  if(!apiReady()){box.innerHTML='<div class="empty">Isi API_URL terlebih dahulu untuk menampilkan pesan dari server.</div>';return}
+  box.innerHTML='<div class="empty">Loading...</div>';
+  try{
+    const d=await apiGet("getMessages",{limit:8});
+    if(!d.items.length){box.innerHTML='<div class="empty">Belum ada pesan tersimpan.</div>';return}
+    box.innerHTML=d.items.map(x=>`<div class="result"><b>${escapeHtml(x.name||"Anonymous")} · ${escapeHtml(x.category||"Random")}</b><p>${escapeHtml(x.message||"")}</p></div>`).join("");
+  }catch(e){box.innerHTML=`<div class="empty">${escapeHtml(e.message)}</div>`}
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+document.getElementById("refreshBtn").onclick=()=>{loadDashboard();loadRecentMessages();toast("Dashboard refreshed.")};
+document.getElementById("searchInput").addEventListener("input",e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll(".page.active .card").forEach(c=>c.style.outline=q && c.innerText.toLowerCase().includes(q)?"2px solid #c8b9e2":"");
+});
+
+const music=document.getElementById("bgMusic"), musicBtn=document.getElementById("musicBtn");
+musicBtn.onclick=async()=>{
+  try{
+    if(music.paused){await music.play();musicBtn.classList.add("music-on");musicBtn.textContent="♫";toast("Music on ✦")}
+    else{music.pause();musicBtn.classList.remove("music-on");toast("Music off")}
+  }catch(e){toast("Tambahkan assets/music.mp3 dulu.",false)}
+};
+
+document.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{
+  img.style.background="linear-gradient(135deg,#ece7f5,#f3e4e8)";
+  img.alt="Upload foto di folder assets";
+}));
+
+loadDashboard();
+loadRecentMessages();
+loadActivities();
+loadQuestion();
+</script>
+</body>
+</html>
